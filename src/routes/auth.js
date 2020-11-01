@@ -32,10 +32,14 @@ router.post('/register', async (req, res) => {
   try {
     //save user
     const savedUser = await user.save()
+    //Create token
+    const token = jwt.sign({ _id: savedUser._id }, process.env.TOKEN_SECRET)
+    res.header('auth-token', token)
     res.send(savedUser)
   } catch (err) {
     res.status(400).send(err)
   }
+
 
 })
 
@@ -52,7 +56,8 @@ router.post('/login', async (req, res) => {
   if (!validPass) return res.status(400).send("Invalid Password")
   //Create token
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
-  res.header('auth-token', token).send(token)
+  res.header('auth-token', token)
+  res.send(user)
 })
 
 export default router
