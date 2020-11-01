@@ -14,7 +14,7 @@ mongoose.connect(process.env.DATABASE_CONNECT,
     useNewUrlParser: true,
     useUnifiedTopology: true
   },
-  err => console.log(err)
+  err => console.log(err || "Connected succesfully!")
 )
 
 //Middlwares
