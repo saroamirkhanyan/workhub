@@ -12,7 +12,7 @@ body: {
   name,
   password
 }
-* **response**: user
+* **response**: {_id,name,email,password(hashed),date,}:Object
 
 #### Login
 **POST** /user/login
@@ -21,4 +21,4 @@ body: {
   email,
   password
 }
-* **response**: token
+* **response**: token:String
