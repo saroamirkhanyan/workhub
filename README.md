@@ -3,8 +3,8 @@
 #### Backend of workhub.am
 _________
 ## Usage
-### Auth
-#### Register
+## Auth
+### Register
 
 ##### Request
 **POST** /user/register
@@ -26,6 +26,7 @@ _________
 | date     | string | date of creating user |
 
 #
+### Login
 
 ##### Request
 **POST** /user/login
