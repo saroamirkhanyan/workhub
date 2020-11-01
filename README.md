@@ -1,9 +1,5 @@
 # workhub.am
 
-### Backend of workhub.am
-
-### Usage
-
-#### Auth
-
-##### Register
+## Backend of workhub.am
+##### Usage
+###### Register
