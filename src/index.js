@@ -6,6 +6,7 @@ import cors from "cors"
 import "dotenv/config"
 // Initializing App
 const app = express()
+const { PORT } = process.env
 
 // Connect to Database
 mongoose.connect(process.env.DATABASE_CONNECT,
@@ -16,6 +17,11 @@ mongoose.connect(process.env.DATABASE_CONNECT,
   err => console.log(err)
 )
 
-//Middlware
+//Middlwares
 app.use(cors())
+app.use(express.json())
 app.use('/', routes)
+
+
+app.listen(PORT)
+console.log("SERVER STARTED AT", PORT, "PORT")

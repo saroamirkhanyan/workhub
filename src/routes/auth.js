@@ -1,11 +1,11 @@
 import { Router } from "express"
 import User from '../model/User'
-import Joi from '@hapi/joi'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { registerValidation, loginValidation } from '../validation.js'
+import { registerValidation, loginValidation } from '@/validation'
 
-const router = Router
+const router = Router()
+
 
 router.post('/register', async (req, res) => {
   //Validation
@@ -21,6 +21,7 @@ router.post('/register', async (req, res) => {
   const salt = await bcrypt.genSalt(10)
   const hashedPassword = await bcrypt.hash(req.body.password, salt)
 
+
   //create new user
   const user = new User({
     name: req.body.name,
@@ -35,6 +36,7 @@ router.post('/register', async (req, res) => {
   } catch (err) {
     res.status(400).send(err)
   }
+
 })
 
 router.post('/login', async (req, res) => {
