@@ -21,5 +21,4 @@ body: {
   email,
   password
 }
-\
 * **response**: token
