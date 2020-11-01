@@ -5,20 +5,35 @@ _________
 ## Usage
 ### Auth
 #### Register
-**POST** /user/register
-\
-body: {
-  email,
-  name,
-  password
-}
-* **response**: {_id,name,email,password(hashed),date,}:Object
 
-#### Login
+##### Request
+**POST** /user/register
+
+| name     | type   | short description |
+|----------|--------|-------------------|
+| email    | string | email of user     |
+| name     | string | name of user      |
+| password | string | password of user  |
+
+##### Response
+
+| name     | type   | short description     |
+|----------|--------|-----------------------|
+| email    | string | email of user         |
+| name     | string | name of user          |
+| password | string | password of user      |
+| id       | string | unique id of user     |
+| date     | string | date of creating user |
+
+
+##### Request
 **POST** /user/login
-\
-body: {
-  email,
-  password
-}
-* **response**: token:String
+| name     | type   | short description     |
+|----------|--------|-----------------------|
+| email    | string | email of user         |
+| password | string | password of user      |
+
+##### Response
+| name  | type   | short description |
+|-------|--------|-------------------|
+| token | string | token of user     |
