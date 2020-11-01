@@ -5,7 +5,7 @@ _________
 ## Usage
 ### Auth
 #### Register
-POST /user/register
+**POST** /user/register
 \
 body: {
   email,
@@ -15,7 +15,7 @@ body: {
 * **response**: user
 
 #### Login
-POST /user/login
+**POST** /user/login
 \
 body: {
   email,
