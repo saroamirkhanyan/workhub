@@ -12,7 +12,7 @@ body: {
   name,
   password
 }
-response = user
+* **response**: user
 
 #### Login
 POST /user/login
@@ -22,4 +22,4 @@ body: {
   password
 }
 \
-response = token
+* **response**: token
