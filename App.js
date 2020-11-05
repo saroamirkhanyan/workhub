@@ -1,1 +1,1 @@
-console.log(true)
+console.lo(екшгу)
