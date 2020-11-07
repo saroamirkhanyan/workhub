@@ -1,10 +1,12 @@
+import React from 'react'
+import Header from './components/Header'
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">Wrokhub</header>
-    </div> //hello world
+    <>
+      <Header />
+    </>
   )
 }
 
-// i think it is very impoprtant
 export default App
