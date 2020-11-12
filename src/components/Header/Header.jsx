@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Logo from './Logo'
 import SignButtons from './SignButtons'
-import Switcher from './Switch'
+import Switcher from './ThemeSwitch'
 const HeaderStyled = styled.header`
   grid-column: 1/ 13;
   height: 65px;
