@@ -1,11 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-<<<<<<< HEAD
 import GlobalStyle from './styled/GlobalStyle.js'
-=======
-import GlobalStyle from './styled/GlobalStyle/GlobalStyle.js'
->>>>>>> c473126d92c437112d94304c8f1b3603f6c50b50
 import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
