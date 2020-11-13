@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const workSchema = new mongoose.Schema({
-  user_id: {
+  userId: {
     type: String,
     required: true,
   },

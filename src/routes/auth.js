@@ -2,7 +2,9 @@ import { Router } from "express"
 import User from '../model/User'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { registerValidation, loginValidation } from '@/validation'
+
+import registerValidation from '@/validation/register'
+import loginValidation from '@/validation/login'
 
 const router = Router()
 
