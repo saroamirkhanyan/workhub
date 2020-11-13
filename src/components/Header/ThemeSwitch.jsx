@@ -8,7 +8,7 @@ const SwitcherLabel = styled.label`
   width: 55px;
   height: 18px;
   border-radius: 9px;
-  background-color: ${(props) => props.theme.BtnCol};
+  background-color: ${(props) => props.theme.btnCol};
   &:focus {
     user-select: none;
   }
