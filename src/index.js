@@ -22,6 +22,6 @@ app.use(cors())
 app.use(express.json())
 app.use('/', routes)
 
-
+// Start Server
 app.listen(PORT)
 console.log("SERVER STARTED AT", PORT, "PORT")

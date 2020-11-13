@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import verify from "./verify"
 import Work from '@/model/Work'
-import createWorkValidation from "@/validation/work"
+import workValidation from "@/validation/work"
 
 const router = Router()
 
@@ -12,7 +12,7 @@ router.post('/', verify, async (req, res) => {
     ...req.body
   }
   // validation
-  const { error } = createWorkValidation(userData)
+  const { error } = workValidation(userData)
   if (error) return res.status(400).send(error)
   // trying create new work
   const work = new Work(userData)

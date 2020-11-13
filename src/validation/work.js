@@ -1,6 +1,6 @@
 import Joi from '@hapi/joi'
 
-const createWorkValidation = data => {
+const workValidation = data => {
   const schema = Joi.object({
     userId: Joi.object().required(),
     price: Joi.number().min(0).required(),
@@ -9,4 +9,4 @@ const createWorkValidation = data => {
   return schema.validate(data)
 }
 
-export default createWorkValidation
+export default workValidation
