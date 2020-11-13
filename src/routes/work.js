@@ -7,13 +7,14 @@ const router = Router()
 
 //creating work
 router.post('/', verify, async (req, res) => {
-  // validation
   const userData = {
     userId: req.user._id,
     ...req.body
   }
+  // validation
   const { error } = createWorkValidation(userData)
   if (error) return res.status(400).send(error)
+  // trying create new work
   const work = new Work(userData)
   try {
     const savedWork = await work.save()
