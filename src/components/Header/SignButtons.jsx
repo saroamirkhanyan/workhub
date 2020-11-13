@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Button } from '../../styled/StyledElements'
+import React from "react";
+import styled from "styled-components";
+import { Button } from "../../styled/StyledElements";
 
 const ButtonSignIn = styled(Button)`
   grid-column: 4/7;
@@ -12,12 +12,12 @@ const ButtonLogIn = styled(Button)`
 `
 
 function SignButtons() {
-  return (
-    <>
-      <ButtonSignIn>Sign in</ButtonSignIn>
-      <ButtonLogIn>Log in</ButtonLogIn>
-    </>
-  )
+    return (
+        <>
+            <ButtonSignIn>Sign in</ButtonSignIn>
+            <ButtonLogIn>Log in</ButtonLogIn>
+        </>
+    );
 }
 
-export default SignButtons
+export default SignButtons;

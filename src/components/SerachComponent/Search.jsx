@@ -16,7 +16,6 @@ function Search() {
   return (
     <SearchWrapper>
       <SearchIcon />
-      <div>ds</div>
     </SearchWrapper>
   )
 }

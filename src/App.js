@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import useThemeMode from './styled/ThemeMode.js'
 import Search from './components/SerachComponent/Search'
 
-const Conrainer = styled.div`
+const Container = styled.div`
   width: 100%;
   height: auto;
   background-color: ${(props) => props.theme.containerBg};
@@ -18,10 +18,10 @@ function App() {
 
   return (
     <ThemeProvider theme={themePalette}>
-      <Conrainer>
+      <Container>
         <Header theme={theme} setTheme={setTheme} />
-        <Search />
-      </Conrainer>
+        <Search/>
+      </Container>
     </ThemeProvider>
   )
 }
