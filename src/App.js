@@ -3,7 +3,7 @@ import Header from './components/Header/Header'
 import styled, { ThemeProvider } from 'styled-components'
 import useThemeMode from './styled/ThemeMode.js'
 
-const Conrainer = styled.div`
+const Container = styled.div`
   width: 100%;
   height: auto;
   background-color: ${(props) => props.theme.containerBg};
@@ -16,10 +16,10 @@ function App() {
 
   return (
     <ThemeProvider theme={themePalette}>
-      <Conrainer>
+      <Container>
         <Header theme={theme} setTheme={setTheme} />
         <div>as</div>
-      </Conrainer>
+      </Container>
     </ThemeProvider>
   )
 }
