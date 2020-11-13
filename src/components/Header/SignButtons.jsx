@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { Button } from "../../styled/StyledElements";
 
 const ButtonSignIn = styled(Button)`
-    grid-column: 4/7;
+    grid-column: 4 / 7;
 `;
 const ButtonLogIn = styled(Button)`
-    grid-column: 7/10;
+    grid-column: 7 / 10;
 `;
 
 function SignButtons() {
