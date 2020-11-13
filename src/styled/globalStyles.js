@@ -10,5 +10,9 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing:border-box;
   }
+  label:active{
+    -webkit-tap-highlight-color: transparent
+  }
+
 `
 export default GlobalStyles

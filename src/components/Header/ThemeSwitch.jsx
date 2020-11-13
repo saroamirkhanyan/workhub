@@ -9,6 +9,9 @@ const SwitcherLabel = styled.label`
   height: 18px;
   border-radius: 9px;
   background-color: ${(props) => props.theme.BtnCol};
+  &:focus {
+    user-select: none;
+  }
   cursor: pointer;
 `
 
@@ -28,26 +31,10 @@ const SwitcherInput = styled.input`
     transform: translateX(37px);
   }
 `
-function Switcher({ currentTheme, setTheme }) {
+function Switcher({ theme, setTheme }) {
   const swtcherClicked = () => {
-    // current theme i hamar
-    const theme = currentTheme === 'light' ? 'dark' : 'light'
-    //es masy durs chi galis
-    //true false karelier anel
-    // nayi ete 3 hat theme unenaq tvyal depqum es algorithmy chi ashxati
-    //es gazaraguyn guynic het chem kaynelu tra hamar senc areci es 3 hat theme em planavore
-    //haa parza ba et deqpum arden switcheri tvyal tarberiaky chi ogni petqa arden voch te
-    // checkbox ogtagorces ayl select u et inch vor yntrum a usery ete el dnes spasi cucyc ta
-    setTheme(theme)
+    setTheme(theme === 'light' ? 'dark' : 'light')
   }
-  //aveli lav anun kareli a mtacel inch kareli a anuny dnel?
-  //indz tvuma senc aveli lava inch kases?
-  //esim
-  //meka menq setTheme funkcian kanchelu kam karanq senc anneq
-  // theme === 'light' ? setTheme('dark') : setTheme('light')
-  // Switch.js y etqan el lav anun chi orinak vor es aranc haskanalu nayeyi cheyi haskana ira imsty
-  //mekel stex
-  //indz tvuma ThemeSwtich.js aveli lava okay
   return (
     <SwitcherLabel>
       <SwitcherInput onClick={swtcherClicked} type="checkbox" />

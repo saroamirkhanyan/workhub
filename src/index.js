@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import GlobalStyle from './styled/GlobalStyle.js'
+import GlobalStyles from './styled/GlobalStyles.js'
 import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
@@ -9,7 +9,7 @@ import store from './redux/reduxStore'
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
+    <GlobalStyles />
     <BrowserRouter>
       <Provider store={store}>
         <React.Suspense fallback={<h1>Preolader</h1>}>
