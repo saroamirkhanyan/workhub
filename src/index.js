@@ -9,9 +9,9 @@ import store from './redux/reduxStore'
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyles />
     <BrowserRouter>
       <Provider store={store}>
+        <GlobalStyles />
         <React.Suspense fallback={<h1>Preolader</h1>}>
           <App />
         </React.Suspense>

@@ -11,9 +11,9 @@ export default function useThemeMode() {
     primaryColor: '#717171',
     btnCol: '#DBDBDB',
     containerBg: '#EBEBEB',
-    logoMob: LogoMobLight,
+    LogoMob: LogoMobLight,
     LogoDesk: LogoDeskLight,
-    SearchlIcon: SearchIconDark,
+    SearchIcon: SearchIconLight,
   }
   const darkTheme = {
     primaryBg: '#A4A4A4',
@@ -21,9 +21,9 @@ export default function useThemeMode() {
     primaryColor: '#FFFFFF',
     btnCol: '#C4C4C4',
     containerBg: '#F5F5F5',
-    logoMob: LogoMobDark,
+    LogoMob: LogoMobDark,
     LogoDesk: LogoDeskLight,
-    SearchIcon: SearchIconLight,
+    SearchIcon: SearchIconDark,
   }
 
   const [theme, setTheme] = useState(localStorage.getItem('theme'))
@@ -32,9 +32,8 @@ export default function useThemeMode() {
       localStorage.setItem('theme', 'light')
       setTheme('light')
     } else {
-      theme === 'light'
-        ? localStorage.setItem('theme', 'light')
-        : localStorage.setItem('theme', 'dark')
+      const newTheme = theme === 'light' ? 'light' : 'dark'
+      localStorage.setItem('theme', newTheme)
     }
   }, [theme])
   return [theme, theme === 'light' ? lightTheme : darkTheme, setTheme]

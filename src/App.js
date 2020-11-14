@@ -3,6 +3,7 @@ import Header from './components/Header/Header'
 import styled, { ThemeProvider } from 'styled-components'
 import useThemeMode from './styled/ThemeMode.js'
 import Search from './components/SerachComponent/Search'
+import DivideLine from './components/Content/DivideLine/DivideLine'
 
 const Container = styled.div`
   width: 100%;
@@ -20,7 +21,8 @@ function App() {
     <ThemeProvider theme={themePalette}>
       <Container>
         <Header theme={theme} setTheme={setTheme} />
-        <Search/>
+        <Search />
+        <DivideLine />
       </Container>
     </ThemeProvider>
   )

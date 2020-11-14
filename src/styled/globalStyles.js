@@ -14,6 +14,9 @@ const GlobalStyles = createGlobalStyle`
   label:active{
     -webkit-tap-highlight-color: transparent
   }
+  input{
+    outline:none;
+  }
 
 `
 export default GlobalStyles
