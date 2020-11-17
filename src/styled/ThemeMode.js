@@ -6,8 +6,8 @@ import SearchIconDark from '../images/SearchLogoDark.svg'
 import SearchIconLight from '../images/SearchLogoLight.svg'
 export default function useThemeMode() {
   const lightTheme = {
-    primaryBg: '#F2F2F2',
-    secondaryBg: '#F6F6F6',
+    secondaryBg: '#F2F2F2',
+    primaryBg: '#F6F6F6',
     primaryColor: '#717171',
     btnCol: '#DBDBDB',
     containerBg: '#EBEBEB',
@@ -16,8 +16,8 @@ export default function useThemeMode() {
     SearchIcon: SearchIconLight,
   }
   const darkTheme = {
-    primaryBg: '#A4A4A4',
-    secondaryBg: '#ADADAD',
+    secondaryBg: '#A4A4A4',
+    primaryBg: '#ADADAD',
     primaryColor: '#FFFFFF',
     btnCol: '#C4C4C4',
     containerBg: '#F5F5F5',

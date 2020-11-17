@@ -10,7 +10,7 @@ const SearchWrapper = styled.label`
   align-items: center;
   height: 40px;
   border-radius: 20px;
-  background-color: ${(props) => props.theme.secondaryBg};
+  background-color: ${(props) => props.theme.primaryBg};
 `
 
 function Search() {

@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import useThemeMode from './styled/ThemeMode.js'
 import Search from './components/SerachComponent/Search'
 import DivideLine from './components/Content/DivideLine/DivideLine'
+import Jobs from './components/Content/Main/Jobs'
 
 const Container = styled.div`
   width: 100%;
@@ -23,6 +24,7 @@ function App() {
         <Header theme={theme} setTheme={setTheme} />
         <Search />
         <DivideLine />
+        <Jobs />
       </Container>
     </ThemeProvider>
   )

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Place = styled.input`
   height: 55%;
   width: 90%;
-  background-color: ${(props) => props.theme.secondaryBg};
+  background-color: ${(props) => props.theme.primaryBg};
   border: none;
   border-left: 2.5px solid ${(props) => props.theme.btnCol};
   color: ${(props) => props.theme.primaryColor};

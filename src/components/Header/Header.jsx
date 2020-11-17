@@ -6,7 +6,7 @@ import Switcher from './ThemeSwitch'
 const HeaderStyled = styled.header`
   grid-column: 1/ 13;
   height: 65px;
-  background-color: ${(props) => props.theme.secondaryBg};
+  background-color: ${(props) => props.theme.primaryBg};
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 30px;
   display: grid;
