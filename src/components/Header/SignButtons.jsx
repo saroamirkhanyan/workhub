@@ -1,23 +1,32 @@
-import React from "react";
-import styled from "styled-components";
-import { Button } from "../../styled/StyledElements";
+import React from 'react'
+import styled from 'styled-components'
+import { Button } from '../../styled/StyledElements'
+
+const SignButtonsWrapper = styled.div`
+  grid-column: 4/7;
+  display: flex;
+  justify-content: space-between;
+  width: 170px;
+`
 
 const ButtonSignIn = styled(Button)`
-  grid-column: 4/7;
+  width: 80px;
+  height: 34px;
   font-weight: 600;
 `
 const ButtonLogIn = styled(Button)`
-  grid-column: 7/10;
+  width: 80px;
+  height: 34px;
   font-weight: 600;
 `
 
 function SignButtons() {
-    return (
-        <>
-            <ButtonSignIn>Sign in</ButtonSignIn>
-            <ButtonLogIn>Log in</ButtonLogIn>
-        </>
-    );
+  return (
+    <SignButtonsWrapper>
+      <ButtonSignIn>Sign in</ButtonSignIn>
+      <ButtonLogIn>Log in</ButtonLogIn>
+    </SignButtonsWrapper>
+  )
 }
 
-export default SignButtons;
+export default SignButtons

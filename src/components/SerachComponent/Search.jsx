@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import SearchIcon from './SearchIcon'
-import SearchPlace from './SearchPlace'
+import SearchPlace from './SearchInput'
 
 const SearchWrapper = styled.label`
   display: grid;

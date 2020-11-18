@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import useThemeMode from './styled/ThemeMode.js'
 import Search from './components/SerachComponent/Search'
 import DivideLine from './components/Content/DivideLine/DivideLine'
-import Jobs from './components/Content/Main/Jobs'
+import Jobs from './components/Content/Main/Jobs/Jobs'
 
 const Container = styled.div`
   width: 100%;

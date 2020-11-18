@@ -4,7 +4,7 @@ import Logo from './Logo'
 import SignButtons from './SignButtons'
 import Switcher from './ThemeSwitch'
 const HeaderStyled = styled.header`
-  grid-column: 1/ 13;
+  grid-column: 1/13;
   height: 65px;
   background-color: ${(props) => props.theme.primaryBg};
   border-bottom-right-radius: 30px;
