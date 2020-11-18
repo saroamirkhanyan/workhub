@@ -4,6 +4,7 @@ import routes from './routes'
 
 import cors from "cors"
 import "dotenv/config"
+
 // Initializing App
 const app = express()
 const { PORT } = process.env

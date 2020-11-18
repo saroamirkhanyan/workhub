@@ -1,10 +1,11 @@
 import { Router } from 'express'
-import authRouter from './auth'
+import userRouter from './user'
 import workRouter from './work'
+
 const router = Router()
 
 //Middlewares
-router.use('/user', authRouter)
+router.use('/user', userRouter)
 router.use('/work', workRouter)
 
 export default router
