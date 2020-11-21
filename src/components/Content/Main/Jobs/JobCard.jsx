@@ -4,30 +4,28 @@ import { Button } from '../../../../styled/StyledElements'
 
 const JobCardStyled = styled.section`
   width: 100%;
-  height: 170px;
   background-color: ${(props) => props.theme.primaryBg};
   color: ${(props) => props.theme.primaryColor};
   border-radius: 20px;
-  padding: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 20px;
 `
 
 const CardTitle = styled.h1`
+  grid-column: 1/3;
   font-weight: 600;
   font-size: 17px;
-  height: 70%;
 `
 const CardButton = styled(Button)`
-  font-size: 18px;
-  background-color: ${(props) => props.theme.btnCol};
-  min-width: 50px;
   padding: 5px 10px;
+  align-self: center;
+  justify-self: end;
 `
 
-const CardHashtegs = styled.div`
-  margin: auto 0;
+const CardHashtegs = styled.p`
+  align-self: center;
 `
 
 function JobCard({ jobText, jobHashtags, jobSalary }) {

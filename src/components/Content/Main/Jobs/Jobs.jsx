@@ -8,7 +8,8 @@ const Main = styled.main`
   grid-template-columns: repeat(12, 1fr);
 `
 const Article = styled.article`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   grid-column: 2 / 12;
   grid-row-gap: 30px;
 `
@@ -18,39 +19,39 @@ function Jobs() {
     <Main>
       <Article>
         <JobCard
-          jobText="we need senoior or teamlead  html good developer."
+          jobText="we r"
           jobHashtags="#it,#pntrvumehariv"
-          jobSalary="9959 ֏"
+          jobSalary="9959֏"
         />
         <JobCard
-          jobText="we need junior c++ and java and python and javaSript good developer."
+          jobText="we need junior c++ and java and python and javaSript good dev need junior c++ and java anded javaSr "
           jobHashtags="#it,#pntrvumehariv"
-          jobSalary="9699 ֏"
-        />
-        <JobCard
-          jobText="we need html good developer."
-          jobHashtags="#it,#pntrvumehariv"
-          jobSalary="9 ֏"
+          jobSalary="9699֏"
         />
         <JobCard
           jobText="we need html good developer."
           jobHashtags="#it,#pntrvumehariv"
-          jobSalary="9 ֏"
+          jobSalary="9֏"
         />
         <JobCard
           jobText="we need html good developer."
           jobHashtags="#it,#pntrvumehariv"
-          jobSalary="9 ֏"
+          jobSalary="9֏"
         />
         <JobCard
           jobText="we need html good developer."
           jobHashtags="#it,#pntrvumehariv"
-          jobSalary="9 ֏"
+          jobSalary="9֏"
         />
         <JobCard
           jobText="we need html good developer."
           jobHashtags="#it,#pntrvumehariv"
-          jobSalary="9 ֏"
+          jobSalary="9֏"
+        />
+        <JobCard
+          jobText="we need html good developer."
+          jobHashtags="#it,#pntrvumehariv"
+          jobSalary="9֏"
         />
       </Article>
     </Main>
