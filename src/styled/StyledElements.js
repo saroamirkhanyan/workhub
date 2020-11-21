@@ -15,4 +15,5 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: ${(props) => props.justify};
   align-items: ${(props) => props.align};
+  flex-wrap: wrap;
 `

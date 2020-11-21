@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Device } from '../../styled/DeviceBreackpoints'
 import SearchIcon from './SearchIcon'
 import SearchPlace from './SearchInput'
 
@@ -11,6 +12,9 @@ const SearchWrapper = styled.label`
   height: 40px;
   border-radius: 20px;
   background-color: ${(props) => props.theme.primaryBg};
+  @media ${Device.laptop} {
+    grid-column: 4/10;
+  }
 `
 
 function Search() {
