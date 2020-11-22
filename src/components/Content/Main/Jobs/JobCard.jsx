@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Device } from '../../../../styled/DeviceBreackpoints'
 import { Button, Wrapper } from '../../../../styled/StyledElements'
 
 const JobCardStyled = styled.section`
-  background-color: ${(props) => props.theme.primaryBg};
+  background-color: ${(props) => props.theme.secondaryBg};
   color: ${(props) => props.theme.primaryColor};
   border-radius: 20px;
   padding: 15px;
@@ -17,14 +18,20 @@ const CardTitle = styled.h1`
   font-weight: 600;
   font-size: 17px;
   padding: 10px;
+  border-radius: 15px;
+  @media ${Device.mobileM} {
+    background-color: ${(props) => props.theme.primaryBg};
+  }
 `
 const CardButton = styled(Button)`
   padding: 5px 10px;
 `
+
 const CardWrapper = styled(Wrapper)`
   row-gap: 15px;
 `
-const CardHashtegs = styled.p``
+const CardHashtegs = styled.a``
+
 function JobCard({ jobText, jobHashtags, jobSalary }) {
   return (
     <JobCardStyled>

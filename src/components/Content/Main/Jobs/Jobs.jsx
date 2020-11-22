@@ -28,7 +28,7 @@ function Jobs() {
           jobSalary="9959֏"
         />
         <JobCard
-          jobText="we need junior c++ and java and python and javaSript good dev need junior c++ and java anded javaSr "
+          jobText="weneedjuniorc++andjavaanpythonandjavaSriptgooddeneedjuniorc++and java anded javaSr "
           jobHashtags="#it, #pntrvumehariv"
           jobSalary="9699֏"
         />

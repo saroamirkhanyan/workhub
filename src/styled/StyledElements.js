@@ -11,9 +11,19 @@ export const Button = styled.button`
   color: ${(props) => props.theme.primaryColor};
   font-size: 17px;
 `
+
 export const Wrapper = styled.div`
   display: flex;
   justify-content: ${(props) => props.justify};
   align-items: ${(props) => props.align};
   flex-wrap: wrap;
+`
+
+export const Input = styled.input`
+  background-color: ${(props) => props.theme.secondaryBg};
+  border: none;
+  color: ${(props) => props.theme.primaryColor};
+  ::placeholder {
+    color: ${(props) => props.theme.primaryColor};
+  }
 `

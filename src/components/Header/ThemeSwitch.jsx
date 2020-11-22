@@ -8,7 +8,7 @@ const SwitcherLabel = styled.label`
   grid-column: 11/13;
   position: relative;
   border-radius: 9px;
-  width: 45px;
+  width: 42px;
   height: 18px;
   background-color: ${(props) => props.theme.btnCol};
   cursor: pointer;

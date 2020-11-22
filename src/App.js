@@ -16,10 +16,10 @@ const Container = styled.div`
 `
 
 function App() {
-  const [theme, themePalette, setTheme] = useThemeMode()
+  const [theme, ThemePalette, setTheme] = useThemeMode()
 
   return (
-    <ThemeProvider theme={themePalette}>
+    <ThemeProvider theme={ThemePalette}>
       <Container>
         <Header theme={theme} setTheme={setTheme} />
         <Search />
