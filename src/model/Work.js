@@ -13,6 +13,9 @@ const workSchema = new mongoose.Schema({
     type: String,
     min: 25,
     max: 1000,
+  },
+  hashtags: {
+    type: Array,
   }
 })
 
