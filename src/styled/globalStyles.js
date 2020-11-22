@@ -18,8 +18,5 @@ const GlobalStyles = createGlobalStyle`
   input{
     outline:none;
   }
-  a{
-    text-decoration:none;
-  }
 `
 export default GlobalStyles
