@@ -16,6 +16,10 @@ const workSchema = new mongoose.Schema({
   },
   hashtags: {
     type: Array,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   }
 })
 
