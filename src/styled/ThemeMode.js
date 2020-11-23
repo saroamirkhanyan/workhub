@@ -6,7 +6,8 @@ export default function useThemeMode() {
 
   const isTheme = theme in ThemePalette
 
-  !isTheme ? setTheme('light') : localStorage.setItem('theme', theme)
+  if (!isTheme) setTheme('light')
+  localStorage.setItem('theme', theme)
 
   return [theme, ThemePalette[theme], setTheme]
 }

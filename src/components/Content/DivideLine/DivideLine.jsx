@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Line = styled.hr`
   grid-column: 1 / 13;
   height: 9px;
-  background-color: ${(props) => props.theme.secondaryBg};
+  background-color: ${(props) => props.theme.primaryBg};
   border: none;
   border-radius: 5px;
 `

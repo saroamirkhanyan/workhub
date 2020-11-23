@@ -4,10 +4,12 @@ import { Device } from '../../styled/DeviceBreackpoints'
 
 const LogoStyled = styled.div`
   grid-column: 2 /4;
-  background: url(${(props) => props.theme.LogoMob});
+  background: url(${(props) => props.theme.LogoMob}), no-repeat;
   background-size: 100%;
   width: 14vw;
   height: 14vw;
+  background-repeat: no-repeat;
+  background-size: cover;
   @media ${Device.mobileS} {
     width: 53px;
     height: 53px;
@@ -19,7 +21,6 @@ const LogoStyled = styled.div`
     background: url(${(props) => props.theme.LogoDesk});
     background-repeat: no-repeat;
   }
-  background-repeat: no-repeat;
 `
 
 function Logo() {

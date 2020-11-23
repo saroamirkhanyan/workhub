@@ -4,7 +4,7 @@ import { Button, Wrapper } from '../../../../styled/StyledElements'
 import CardTitle from './CardTitle'
 
 const JobCardStyled = styled.section`
-  background-color: ${(props) => props.theme.secondaryBg};
+  background-color: ${(props) => props.theme.primaryBg};
   color: ${(props) => props.theme.primaryColor};
   border-radius: 20px;
   padding: 15px;

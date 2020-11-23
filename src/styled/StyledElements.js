@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
 `
 
 export const Input = styled.input`
-  background-color: ${(props) => props.theme.secondaryBg};
+  background-color: ${(props) => props.theme.primaryBg};
   border: none;
   color: ${(props) => props.theme.primaryColor};
   ::placeholder {
