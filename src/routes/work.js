@@ -18,7 +18,7 @@ router.post('/', verify, async (req, res) => {
   const work = new Work(userData)
   try {
     const savedWork = await work.save()
-    req.status(200).json(savedWork)
+    res.status(200).json(savedWork)
   }
   catch (err) {
     res.status(400).send(err)
