@@ -7,7 +7,9 @@ const router = Router()
 router.get('/', async (req, res) => {
   let { page, count } = req.query
   //  To Number
-  [page, count] = [Number(page), Number(count)]
+  page = parseInt(page)
+  count = parseInt(count)
+
   // validation
   const { error } = paginationValidation({ page, count })
   if (error) return res.status(400).send(error)
