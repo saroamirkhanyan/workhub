@@ -6,12 +6,12 @@ const router = Router()
 
 
 router.get('/', async (req, res) => {
-
+  const { query } = req.query
+  const hashtags = query.split(' ')
   /// validation
-  const { error } = searchWorkValidation(req.body)
+  const { error } = searchWorkValidation({ hashtags })
   if (error) return res.status(400).send(error)
 
-  const { hashtags } = req.body
   const works = await Work.find({
     hashtags: {
       $in: hashtags
