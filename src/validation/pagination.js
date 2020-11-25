@@ -1,6 +1,6 @@
 import Joi from '@hapi/joi'
 
-const worksValidation = data => {
+const paginationValidation = data => {
   const schema = Joi.object({
     page: Joi.number().min(1),
     count: Joi.number().min(1)
@@ -8,4 +8,4 @@ const worksValidation = data => {
   return schema.validate(data)
 }
 
-export default worksValidation
+export default paginationValidation

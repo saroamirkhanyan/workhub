@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import verify from "./verify"
+import verify from '@/routes/user/verify'
 import Work from '@/model/Work'
-import workValidation from "@/validation/work"
+import workValidation from '@/validation/work'
 
 const router = Router()
 
@@ -24,7 +24,5 @@ router.post('/', verify, async (req, res) => {
     res.status(400).send(err)
   }
 })
-
-
 
 export default router
