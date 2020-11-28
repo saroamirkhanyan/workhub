@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { LoadCardsThunk } from '../../../../redux/jobCard-reducer'
 import { Device } from '../../../../styled/DeviceBreackpoints'
 import JobCard from './JobCard'
 
@@ -18,48 +20,37 @@ const Article = styled.article`
   }
 `
 
-function Jobs() {
+const Jobs = React.memo(() => {
+  const JobCards = useSelector((state) => state.JobCards.cards)
+  const dispatch = useDispatch()
+  const [page, setPage] = useState(1)
+
+  window.addEventListener('scroll', () => {
+    if (
+      document.documentElement.scrollHeight - window.scrollY ===
+      window.innerHeight
+    ) {
+      setPage(page + 1)
+      console.log(page)
+    }
+  })
+  useEffect(() => {
+    dispatch(
+      LoadCardsThunk({
+        page,
+        count: 5,
+      })
+    )
+  }, [dispatch, page])
+  console.log(JobCards)
+
+  const Cards = JobCards.map((cards) => <JobCard key={cards._id} {...cards} />)
+
   return (
     <Main>
-      <Article>
-        <JobCard
-          jobText="we r"
-          jobHashtags="#junior c++ and java and python and javaSrip"
-          jobSalary="9959֏"
-        />
-        <JobCard
-          jobText="weneedjuniorc++andjavaanpythonandjavaSriptgooddeneedjuniorc++and java anded javaSr "
-          jobHashtags="#it, #pntrvumehariv"
-          jobSalary="9699֏"
-        />
-        <JobCard
-          jobText="we need html good developer."
-          jobHashtags="#it, #pntrvumehariv"
-          jobSalary="9֏"
-        />
-        <JobCard
-          jobText="we need html good developer."
-          jobHashtags="#it, #pntrvumehariv"
-          jobSalary="9֏"
-        />
-        <JobCard
-          jobText="we need html good developer."
-          jobHashtags="#it, #pntrvumehariv"
-          jobSalary="9֏"
-        />
-        <JobCard
-          jobText="we need html good developer."
-          jobHashtags="#it, #pntrvumehariv"
-          jobSalary="9֏"
-        />
-        <JobCard
-          jobText="we need html good developer."
-          jobHashtags="#it, #pntrvumehariv"
-          jobSalary="9֏"
-        />
-      </Article>
+      <Article>{Cards}</Article>
     </Main>
   )
-}
+})
 
 export default Jobs

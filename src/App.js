@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Profiler } from 'react'
 import Header from './components/Header/Header'
 import styled, { ThemeProvider } from 'styled-components'
 import useThemeMode from './styled/ThemeMode.js'
@@ -19,14 +19,16 @@ function App() {
   const [theme, ThemePalette, setTheme] = useThemeMode()
 
   return (
-    <ThemeProvider theme={ThemePalette}>
-      <Container>
-        <Header theme={theme} setTheme={setTheme} />
-        <Search />
-        <DivideLine />
-        <Jobs />
-      </Container>
-    </ThemeProvider>
+    <Profiler id="Navigation" onRender={<h1>Loading mazafaka</h1>}>
+      <ThemeProvider theme={ThemePalette}>
+        <Container>
+          <Header theme={theme} setTheme={setTheme} />
+          <Search />
+          <DivideLine />
+          <Jobs />
+        </Container>
+      </ThemeProvider>
+    </Profiler>
   )
 }
 

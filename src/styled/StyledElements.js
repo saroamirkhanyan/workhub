@@ -10,6 +10,7 @@ export const Button = styled.button`
   background-color: ${(props) => props.theme.btnCol};
   color: ${(props) => props.theme.primaryColor};
   font-size: 17px;
+  cursor: pointer;
 `
 
 export const Wrapper = styled.div`

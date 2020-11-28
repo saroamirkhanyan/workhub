@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button, Wrapper } from '../../../../styled/StyledElements'
-import CardTitle from './CardTitle'
+import CardDescription from './CardDescription'
 
 const JobCardStyled = styled.section`
   background-color: ${(props) => props.theme.primaryBg};
@@ -26,13 +26,13 @@ const CardHashtegs = styled.p`
   font-size: 15px;
 `
 
-function JobCard({ jobText, jobHashtags, jobSalary }) {
+function JobCard({ hashtags, price, description }) {
   return (
     <JobCardStyled>
-      <CardTitle>{jobText}</CardTitle>
+      <CardDescription>{description}</CardDescription>
       <CardWrapper justify="space-between" align="center">
-        <CardHashtegs>{jobHashtags}</CardHashtegs>
-        <CardButton>{jobSalary}</CardButton>
+        <CardHashtegs>{hashtags}</CardHashtegs>
+        <CardButton>{price}</CardButton>
       </CardWrapper>
     </JobCardStyled>
   )
