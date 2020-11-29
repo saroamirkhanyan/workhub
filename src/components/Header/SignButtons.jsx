@@ -28,8 +28,8 @@ const SignButton = styled(Button)`
 function SignButtons() {
   return (
     <SignButtonsWrapper>
+      <SignButton>Sign up</SignButton>
       <SignButton>Sign in</SignButton>
-      <SignButton>Log in</SignButton>
     </SignButtonsWrapper>
   )
 }

@@ -19,7 +19,7 @@ export const ThemePalette = {
     primaryBg: '#A4A4A4',
     primaryColor: '#FFFFFF',
     btnCol: '#C4C4C4',
-    containerBg: '#F5F5F5',
+    containerBg: '#DDDDDD',
     LogoMob: LogoMobDark,
     LogoDesk: LogoDeskDark,
     SearchIcon: SearchIconDark,
