@@ -2,9 +2,7 @@ import Joi from '@hapi/joi'
 
 
 const searchWorkValidation = data => {
-  const schema = Joi.object({
-    hashtags: Joi.array().required(),
-  })
+  const schema = Joi.string().required()
   return schema.validate(data)
 }
 
