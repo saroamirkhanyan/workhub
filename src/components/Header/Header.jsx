@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import Logo from './Logo'
+import Logo from './WorkHubLogo'
 import SignButtons from './SignButtons'
-import Switcher from './ThemeSwitch'
+import Switcher from './ThemeSwitcher'
 
 const HeaderStyled = styled.header`
   grid-column: 1/13;

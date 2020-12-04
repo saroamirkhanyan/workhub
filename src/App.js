@@ -1,10 +1,10 @@
-import React, { Profiler } from 'react'
+import React from 'react'
 import Header from './components/Header/Header'
 import styled, { ThemeProvider } from 'styled-components'
 import useThemeMode from './styled/ThemeMode.js'
 import Search from './components/SerachComponent/Search'
-import DivideLine from './components/Content/DivideLine/DivideLine'
-import Jobs from './components/Content/Main/Jobs/Jobs'
+import DivideLine from './components/DivideLine/DivideLine'
+import Jobs from './components/Jobs/Jobs'
 
 const Container = styled.div`
   width: 100%;
@@ -13,22 +13,20 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-row-gap: 18px;
+  transition: all 0.3s ease-in-out;
 `
 
 function App() {
   const [theme, ThemePalette, setTheme] = useThemeMode()
-
   return (
-    <Profiler id="Navigation" onRender={<h1>Loading mazafaka</h1>}>
-      <ThemeProvider theme={ThemePalette}>
-        <Container>
-          <Header theme={theme} setTheme={setTheme} />
-          <Search />
-          <DivideLine />
-          <Jobs />
-        </Container>
-      </ThemeProvider>
-    </Profiler>
+    <ThemeProvider theme={ThemePalette}>
+      <Container>
+        <Header theme={theme} setTheme={setTheme} />
+        <Search />
+        <DivideLine />
+        <Jobs />
+      </Container>
+    </ThemeProvider>
   )
 }
 

@@ -11,7 +11,7 @@ const SearchInputStyled = styled(Input)`
 `
 
 function SearchInput() {
-  return <SearchInputStyled placeholder="search" />
+  return <SearchInputStyled placeholder="Փնտրել" />
 }
 
 export default SearchInput

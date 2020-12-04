@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Button = styled.button`
   display: flex;
@@ -9,8 +9,13 @@ export const Button = styled.button`
   border-radius: 10px;
   background-color: ${(props) => props.theme.btnCol};
   color: ${(props) => props.theme.primaryColor};
-  font-size: 17px;
   cursor: pointer;
+  padding: ${(props) => props.padY}px ${(props) => props.padX}px;
+  ${(props) =>
+    props.size &&
+    css`
+      font-size: ${(props) => props.size};
+    `}
 `
 
 export const Wrapper = styled.div`
@@ -18,6 +23,11 @@ export const Wrapper = styled.div`
   justify-content: ${(props) => props.justify};
   align-items: ${(props) => props.align};
   flex-wrap: wrap;
+  ${(props) =>
+    props.gap &&
+    css`
+      row-gap: ${(props) => props.gap}px;
+    `}
 `
 
 export const Input = styled.input`
@@ -27,4 +37,9 @@ export const Input = styled.input`
   ::placeholder {
     color: ${(props) => props.theme.primaryColor};
   }
+`
+export const Text = styled.p`
+  text-align: center;
+  font-size: ${(props) => props.size}px;
+  color: ${(props) => props.theme.primaryColor};
 `
