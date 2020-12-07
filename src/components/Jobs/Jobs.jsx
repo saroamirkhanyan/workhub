@@ -26,7 +26,6 @@ const Jobs = React.memo(() => {
   const [page, setPage] = useState(1)
   const isCardsLoaded = useSelector((state) => state.JobCards.isCardsLoaded)
 
-  console.log(isCardsLoaded)
 
   useEffect(() => {
     const scrollListener = () => {
@@ -55,7 +54,7 @@ const Jobs = React.memo(() => {
 
   const Cards = JobCards.map((cards) => <JobCard key={cards._id} {...cards} />)
 
-  const Loader = isCardsLoaded && <Text size="30">Սպասեք</Text>
+  const Loader = isCardsLoaded && <Text size="30">Ներբեռնում ...</Text>
   return (
     <Main>
       <Article>{Cards}</Article>
