@@ -4,20 +4,16 @@ import { Device } from '../../styled/DeviceBreackpoints'
 
 const SwitcherLabel = styled.label`
   display: grid;
-  outline: none;
-  grid-column: 12/13;
+  justify-self: center;
+  grid-column: 11/13;
   position: relative;
   border-radius: 9px;
   width: 37px;
   height: 18px;
   background-color: ${(props) => props.theme.btnCol};
   cursor: pointer;
-  &:focus {
-    user-select: none;
-  }
   @media ${Device.mobileS} {
     width: 55px;
-    grid-column: 11/13;
   }
 `
 

@@ -3,13 +3,14 @@ import styled from 'styled-components'
 import { Device } from '../../styled/DeviceBreackpoints'
 
 const LogoStyled = styled.div`
-  grid-column: 2 / 3;
+  grid-column: 1 / 3;
   background: url(${(props) => props.theme.LogoMob}), no-repeat;
   background-size: 100%;
-  width: 14vw;
-  height: 14vw;
+  width: 42px;
+  height: 42px;
   background-repeat: no-repeat;
   background-size: cover;
+  justify-self: center;
   @media ${Device.mobileS} {
     width: 49px;
     height: 49px;
@@ -17,7 +18,7 @@ const LogoStyled = styled.div`
   }
   @media ${Device.laptop} {
     height: 100%;
-    width: auto;
+    width: 100%;
     grid-column: 2 / 5;
     background: url(${(props) => props.theme.LogoDesk});
     background-repeat: no-repeat;

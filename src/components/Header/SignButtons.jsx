@@ -4,7 +4,7 @@ import { Device } from '../../styled/DeviceBreackpoints'
 import { Button, Wrapper } from '../../styled/StyledElements'
 
 const SignButtonsWrapper = styled(Wrapper)`
-  grid-column: 3/12;
+  grid-column: 3/11;
   @media ${Device.mobileS} {
     grid-column: 7/11;
     justify-self: end;
