@@ -14,9 +14,7 @@ const SignButtonsWrapper = styled(Wrapper)`
 `
 
 const SignButton = styled(Button)`
-  @media ${Device.mobileS} {
-    font-size: 17px;
-  }
+  font-size: 15px;
 `
 
 function SignButtons() {
