@@ -14,6 +14,7 @@ const SwitcherLabel = styled.label`
   cursor: pointer;
   @media ${Device.mobileS} {
     width: 55px;
+    justify-self: left;
   }
 `
 
