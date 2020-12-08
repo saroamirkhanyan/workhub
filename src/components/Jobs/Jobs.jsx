@@ -28,7 +28,7 @@ const Jobs = React.memo(() => {
 
   useEffect(() => {
     const scrollListener = () => {
-      const scrollTop = window.pageYOffset || document.body.scrollTop
+      const scrollTop = window.pageYOffset
       const documentHeight = document.body.scrollHeight
       const windowHeight = window.innerHeight
 
@@ -38,6 +38,7 @@ const Jobs = React.memo(() => {
     }
 
     document.addEventListener('scroll', scrollListener)
+    document.addEventListener('touchmove', scrollListener)
     dispatch(
       LoadCardsThunk({
         page,
@@ -47,6 +48,7 @@ const Jobs = React.memo(() => {
 
     return () => {
       document.removeEventListener('scroll', scrollListener)
+      document.removeEventListener('touchmove', scrollListener)
     }
   }, [dispatch, page])
 
