@@ -23,7 +23,7 @@ function SignButtons() {
   return (
     <SignButtonsWrapper justify="space-around" align="center">
       <SignButton padY="7" padX="10" size="4vw">
-        Գրանցվել
+        xi chi asxhxatum push@
       </SignButton>
       <SignButton padY="7" padX="10" size="4vw">
         մուտք գործել

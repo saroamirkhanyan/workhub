@@ -29,7 +29,7 @@ const Jobs = React.memo(() => {
   useEffect(() => {
     const scrollListener = () => {
       const scrollTop = window.pageYOffset || document.body.scrollTop
-      const documentHeight = document.documentElement.scrollHeight
+      const documentHeight = document.body.scrollHeight
       const windowHeight = window.innerHeight
 
       if (scrollTop + windowHeight >= documentHeight) {
