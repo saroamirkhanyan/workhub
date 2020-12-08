@@ -26,22 +26,26 @@ const Jobs = React.memo(() => {
   const [page, setPage] = useState(1)
   const isCardsLoaded = useSelector((state) => state.JobCards.isCardsLoaded)
 
-  useEffect(() => {
-    const scrollListener = () => {
-      const scrollTop = window.pageYOffset || document.body.scrollTop
-      const documentHeight = document.documentElement.scrollHeight
-      const windowHeight = window.innerHeight
+  function loadPageIfNeed() {
+    const scrollHeight = document.scrollingElement.scrollHeight;
+    const offsetHeight = document.body.offsetHeight;
+    console.log(scrollHeight,offsetHeight)
+    if (scrollHeight > offsetHeight) {
+        setPage(page + 1);
+    }
+  }
 
-      if (scrollTop + windowHeight >= documentHeight) {
-        setPage(page + 1)
-      }
+  useEffect(() => {
+    loadPageIfNeed()
+    const scrollListener = () => {
+      loadPageIfNeed()
     }
 
     document.addEventListener('scroll', scrollListener)
     dispatch(
       LoadCardsThunk({
         page,
-        count: 5,
+        count: 1,
       })
     )
 
