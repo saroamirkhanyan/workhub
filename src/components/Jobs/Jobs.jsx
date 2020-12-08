@@ -32,7 +32,7 @@ const Jobs = React.memo(() => {
       const documentHeight = document.documentElement.scrollHeight
       const windowHeight = window.innerHeight
 
-      if (scrollTop + windowHeight === documentHeight) {
+      if (scrollTop + windowHeight >= documentHeight) {
         setPage(page + 1)
       }
     }
