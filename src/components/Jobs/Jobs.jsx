@@ -39,10 +39,12 @@ const Jobs = React.memo(() => {
 
     document.addEventListener('scroll', scrollListener)
     document.addEventListener('touchmove', scrollListener)
+
+    const countOfPages = Math.round(window.innerHeight / 150)
     dispatch(
       LoadCardsThunk({
         page,
-        count: 5,
+        count: countOfPages,
       })
     )
 
