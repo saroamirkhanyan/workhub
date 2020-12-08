@@ -31,10 +31,9 @@ const IsCardsLoadedAction = (isLoaded) => ({ type: IS_CARDS_LOADED, isLoaded })
 
 export const LoadCardsThunk = (count, page) => async (dispatch) => {
   dispatch(IsCardsLoadedAction(true))
-  await LoadCards.load(count, page).then((response) => {
-    dispatch(LoadCardsAction(response))
-    dispatch(IsCardsLoadedAction(false))
-  })
+  const response = await LoadCards.load(count, page)
+  dispatch(LoadCardsAction(response))
+  dispatch(IsCardsLoadedAction(false))
 }
 
 export default JobCardReducer

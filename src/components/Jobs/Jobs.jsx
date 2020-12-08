@@ -54,7 +54,7 @@ const Jobs = React.memo(() => {
 
   const Cards = JobCards.map((cards) => <JobCard key={cards._id} {...cards} />)
 
-  const Loader = isCardsLoaded && <Text size="30">Ներբեռնում ...</Text>
+  const Loader = isCardsLoaded && <Text size="30">Ներբեռնում</Text>
   return (
     <Main>
       <Article>{Cards}</Article>
