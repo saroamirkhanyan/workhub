@@ -9,7 +9,6 @@ router.get('/', paginate, async (req, res) => {
   // get works
   const works = await Work.find({}).sort({ date: -1 }).skip(skipping).limit(count)
   res.json(works)
-
 })
 
 export default router
