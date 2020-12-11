@@ -38,14 +38,14 @@ const WorkCardReducer = (state = InitalState, action) => {
 
 const LoadCardsAction = (cards) => ({ type: ADD_CARD, cards })
 const IsCardsLoadedAction = (isLoaded) => ({ type: IS_CARDS_LOADED, isLoaded })
-const isCardsFinished = (isFinished) => ({ type: IS_CARDS_FINISHED, isFinished })
+const isCardsFinishedAction = (isFinished) => ({ type: IS_CARDS_FINISHED, isFinished })
 
 export const LoadCardsThunk = (count, page) => async (dispatch) => {
   dispatch(IsCardsLoadedAction(true))
   const response = await LoadCards.load(count, page)
   dispatch(LoadCardsAction(response))
   dispatch(IsCardsLoadedAction(false))
-  dispatch(isCardsFinished(response.length < 1))
+  dispatch(isCardsFinishedAction(response.length < 1))
 }
 
 export default WorkCardReducer
