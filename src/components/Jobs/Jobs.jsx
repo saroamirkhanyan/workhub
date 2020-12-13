@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { LoadCardsThunk } from '../../redux/jobCard-reducer'
@@ -24,23 +24,28 @@ const Jobs = React.memo(() => {
   const JobCards = useSelector((state) => state.JobCards.cards)
   const dispatch = useDispatch()
   const [page, setPage] = useState(1)
+
   const isCardsLoaded = useSelector((state) => state.JobCards.isCardsLoaded)
 
-  useEffect(() => {
-    const scrollListener = () => {
-      const scrollTop = window.pageYOffset
-      const documentHeight = document.body.scrollHeight
-      const windowHeight = window.innerHeight
+  const scrollListener = useCallback(() => {
+    const JobCardsLength = JobCard.length + 1
+    const scrollTop = window.pageYOffset
+    const documentHeight = document.body.scrollHeight
+    const windowHeight = window.innerHeight
 
-      if (scrollTop + windowHeight >= documentHeight) {
+    if (scrollTop + windowHeight >= documentHeight) {
+      if (JobCardsLength === page * JobCardsLength) {
+        console.log(JobCardsLength, page * JobCardsLength)
         setPage(page + 1)
       }
     }
+  }, [page])
 
+  useEffect(() => {
     document.addEventListener('scroll', scrollListener)
     document.addEventListener('touchmove', scrollListener)
 
-    const countOfPages = Math.round(window.innerHeight / 150)
+    const countOfPages = Math.round(document.documentElement.clientHeight / 150)
     dispatch(
       LoadCardsThunk({
         page,
@@ -52,7 +57,7 @@ const Jobs = React.memo(() => {
       document.removeEventListener('scroll', scrollListener)
       document.removeEventListener('touchmove', scrollListener)
     }
-  }, [dispatch, page])
+  }, [dispatch, page, scrollListener])
 
   console.log(JobCards, isCardsLoaded)
 
