@@ -13,7 +13,7 @@ const SearchWrapper = styled.label`
   border-radius: 20px;
   background-color: ${(props) => props.theme.primaryBg};
   @media ${Device.laptop} {
-    grid-column: 5/9;
+    grid-column: 4/10;
   }
 `
 

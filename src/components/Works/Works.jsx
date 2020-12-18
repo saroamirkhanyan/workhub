@@ -28,22 +28,29 @@ const Works = React.memo(() => {
   const isCardsFinished = useSelector(
     (state) => state.WorkCards.isCardsFinished
   )
-
   useEffect(() => {
     const scrollListener = () => {
       const scrollTop = window.pageYOffset
       const documentHeight = document.body.scrollHeight
       const windowHeight = window.innerHeight
 
-      if (scrollTop + windowHeight >= documentHeight) {
+      if (scrollTop + windowHeight >= documentHeight && !isCardsLoaded) {
         setPage(page + 1)
       }
     }
-
     document.addEventListener('scroll', scrollListener)
     document.addEventListener('touchmove', scrollListener)
 
+    return () => {
+      document.removeEventListener('scroll', scrollListener)
+      document.removeEventListener('touchmove', scrollListener)
+    }
+  }, [dispatch, page, isCardsLoaded])
+
+  useEffect(() => {
     const countOfPages = Math.round(window.innerHeight / 150)
+    console.log(isCardsFinished)
+
     if (!isCardsFinished) {
       dispatch(
         LoadCardsThunk({
@@ -52,18 +59,15 @@ const Works = React.memo(() => {
         })
       )
     }
-
-    return () => {
-      document.removeEventListener('scroll', scrollListener)
-      document.removeEventListener('touchmove', scrollListener)
-    }
   }, [dispatch, page, isCardsFinished])
 
   const Cards = WorkCards.map((cards) => (
     <WorkCard key={cards._id} {...cards} />
   ))
 
-  const Loader = isCardsLoaded && <Text size="30">Ներբեռնում</Text>
+  const Loader = isCardsLoaded && !isCardsFinished && (
+    <Text size="30">Ներբեռնում</Text>
+  )
   return (
     <Main>
       <Article>{Cards}</Article>
