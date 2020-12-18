@@ -44,7 +44,7 @@ const Works = React.memo(() => {
     document.addEventListener('touchmove', scrollListener)
 
     const countOfPages = Math.round(window.innerHeight / 150)
-    if (!isCardsFinished && !isCardsLoaded) {
+    if (!isCardsFinished) {
       dispatch(
         LoadCardsThunk({
           page,
@@ -57,7 +57,7 @@ const Works = React.memo(() => {
       document.removeEventListener('scroll', scrollListener)
       document.removeEventListener('touchmove', scrollListener)
     }
-  }, [dispatch, page, isCardsFinished, isCardsLoaded])
+  }, [dispatch, page, isCardsFinished])
 
   const Cards = WorkCards.map((cards) => (
     <WorkCard key={cards._id} {...cards} />
