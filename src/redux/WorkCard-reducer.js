@@ -1,12 +1,15 @@
 import { LoadCards } from '../api/api'
 
-const ADD_CARD = 'jobCard-reducer/ADD_CARD'
-const IS_CARDS_LOADED = 'jobCard-reducer/IS_CARDS_LOADED'
+const ADD_CARD = 'WorkCard-reducer/ADD_CARD'
+const IS_CARDS_LOADED = 'WorkCard-reducer/IS_CARDS_LOADED'
+const IS_CARDS_FINISHED = 'WorkCard-reducer/IS_CARDS_FINISHED'
+
 const InitalState = {
   cards: [],
-  isCardsLoaded: null,
+  isCardsLoaded: false,
+  isCardsFinished: false,
 }
-const JobCardReducer = (state = InitalState, action) => {
+const WorkCardReducer = (state = InitalState, action) => {
   switch (action.type) {
     case ADD_CARD: {
       return {
@@ -20,6 +23,13 @@ const JobCardReducer = (state = InitalState, action) => {
         isCardsLoaded: action.isLoaded,
       }
     }
+    case IS_CARDS_FINISHED: {
+      return {
+        ...state,
+        isCardsFinished: action.isFinished,
+      }
+    }
+
     default: {
       return { ...state }
     }
@@ -28,12 +38,18 @@ const JobCardReducer = (state = InitalState, action) => {
 
 const LoadCardsAction = (cards) => ({ type: ADD_CARD, cards })
 const IsCardsLoadedAction = (isLoaded) => ({ type: IS_CARDS_LOADED, isLoaded })
+const isCardsFinishedAction = (isFinished) => ({
+  type: IS_CARDS_FINISHED,
+  isFinished,
+})
 
 export const LoadCardsThunk = (count, page) => async (dispatch) => {
   dispatch(IsCardsLoadedAction(true))
   const response = await LoadCards.load(count, page)
-  dispatch(IsCardsLoadedAction(false))
   dispatch(LoadCardsAction(response))
+
+  dispatch(IsCardsLoadedAction(false))
+  dispatch(isCardsFinishedAction(response.length < 1))
 }
 
-export default JobCardReducer
+export default WorkCardReducer
