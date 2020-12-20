@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLinkStyled } from '../../styled/StyledElements'
 import styled from 'styled-components'
 import { Device } from '../../styled/DeviceBreackpoints'
 import { Button, Wrapper } from '../../styled/StyledElements'
@@ -22,12 +23,17 @@ const SignButton = styled(Button)`
 function SignButtons() {
   return (
     <SignButtonsWrapper justify="space-around" align="center">
-      <SignButton padY="7" padX="10" size="4vw">
-        Գրանցվել
-      </SignButton>
-      <SignButton padY="7" padX="10" size="4vw">
-        մուտք գործել
-      </SignButton>
+      <NavLinkStyled to="/signup">
+        <SignButton padY="7" padX="10" size="4vw">
+          Գրանցվել
+        </SignButton>
+      </NavLinkStyled>
+
+      <NavLinkStyled to="/signin">
+        <SignButton padY="7" padX="10" size="4vw">
+          մուտք գործել
+        </SignButton>
+      </NavLinkStyled>
     </SignButtonsWrapper>
   )
 }

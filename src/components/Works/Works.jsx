@@ -34,7 +34,7 @@ const Works = React.memo(() => {
       const documentHeight = document.body.scrollHeight
       const windowHeight = window.innerHeight
 
-      if (scrollTop + windowHeight >= documentHeight && !isCardsLoaded) {
+      if (scrollTop + windowHeight >= documentHeight && !isCardsLoaded && !isCardsFinished) {
         setPage(page + 1)
       }
     }
@@ -45,7 +45,7 @@ const Works = React.memo(() => {
       document.removeEventListener('scroll', scrollListener)
       document.removeEventListener('touchmove', scrollListener)
     }
-  }, [dispatch, page, isCardsLoaded])
+  }, [dispatch, page, isCardsLoaded,isCardsFinished])
 
   useEffect(() => {
     const countOfPages = Math.round(window.innerHeight / 150)

@@ -2,9 +2,8 @@ import React from 'react'
 import Header from './components/Header/Header'
 import styled, { ThemeProvider } from 'styled-components'
 import useThemeMode from './styled/ThemeMode.js'
-import Search from './components/SerachComponent/Search'
-import DivideLine from './components/DivideLine/DivideLine'
-import Works from './components/Works/Works'
+import WorksContainer from './components/Works/WorksContainer'
+import { Route } from 'react-router-dom'
 
 const Container = styled.div`
   width: 100%;
@@ -22,9 +21,7 @@ function App() {
     <ThemeProvider theme={ThemePalette}>
       <Container>
         <Header theme={theme} setTheme={setTheme} />
-        <Search />
-        <DivideLine />
-        <Works />
+        <Route path="/" render={() => <WorksContainer />} />
       </Container>
     </ThemeProvider>
   )

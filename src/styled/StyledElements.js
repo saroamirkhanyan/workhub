@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 
 export const Button = styled.button`
@@ -42,4 +43,7 @@ export const Text = styled.p`
   text-align: center;
   font-size: ${(props) => props.size}px;
   color: ${(props) => props.theme.primaryColor};
+`
+export const NavLinkStyled = styled(NavLink)`
+  text-decoration: none;
 `
