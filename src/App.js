@@ -3,7 +3,8 @@ import Header from './components/Header/Header'
 import styled, { ThemeProvider } from 'styled-components'
 import useThemeMode from './styled/ThemeMode.js'
 import WorksContainer from './components/Works/WorksContainer'
-import { Route } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
+const Sign = React.lazy(() => import('./components/SignComponent/Sign'))
 
 const Container = styled.div`
   width: 100%;
@@ -21,7 +22,12 @@ function App() {
     <ThemeProvider theme={ThemePalette}>
       <Container>
         <Header theme={theme} setTheme={setTheme} />
-        <Route path="/" render={() => <WorksContainer />} />
+        <Switch>
+          <Route path="/works" render={() => <WorksContainer />} />
+          <Route path="/signup" render={() => <Sign page="signup" />} />
+          <Route path="/signin" render={() => <Sign page="signin" />} />
+          <Redirect from="/" to="/works" />
+        </Switch>
       </Container>
     </ThemeProvider>
   )

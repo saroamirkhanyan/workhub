@@ -34,7 +34,11 @@ const Works = React.memo(() => {
       const documentHeight = document.body.scrollHeight
       const windowHeight = window.innerHeight
 
-      if (scrollTop + windowHeight >= documentHeight && !isCardsLoaded && !isCardsFinished) {
+      if (
+        scrollTop + windowHeight >= documentHeight &&
+        !isCardsLoaded &&
+        !isCardsFinished
+      ) {
         setPage(page + 1)
       }
     }
@@ -45,7 +49,7 @@ const Works = React.memo(() => {
       document.removeEventListener('scroll', scrollListener)
       document.removeEventListener('touchmove', scrollListener)
     }
-  }, [dispatch, page, isCardsLoaded,isCardsFinished])
+  }, [dispatch, page, isCardsLoaded, isCardsFinished])
 
   useEffect(() => {
     const countOfPages = Math.round(window.innerHeight / 150)
@@ -65,13 +69,14 @@ const Works = React.memo(() => {
     <WorkCard key={cards._id} {...cards} />
   ))
 
-  const Loader = isCardsLoaded && !isCardsFinished && (
-    <Text size="30">Ներբեռնում</Text>
-  )
   return (
     <Main>
       <Article>{Cards}</Article>
-      {Loader}
+      {isCardsLoaded && !isCardsFinished && (
+        <Text size="30" align="center">
+          Ներբեռնում
+        </Text>
+      )}
     </Main>
   )
 })

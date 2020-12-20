@@ -40,9 +40,13 @@ export const Input = styled.input`
   }
 `
 export const Text = styled.p`
-  text-align: center;
   font-size: ${(props) => props.size}px;
   color: ${(props) => props.theme.primaryColor};
+  ${(props) =>
+    props.align &&
+    css`
+      text-align: ${(props) => props.align};
+    `}
 `
 export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
