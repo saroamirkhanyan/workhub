@@ -6,11 +6,9 @@ import GlobalStyles from './styled/GlobalStyles.js'
 
 import { Redirect, Route, Switch } from 'react-router-dom'
 import { Loader } from './styled/StyledElements'
+import WorksContainer from './components/Works/WorksContainer'
 const SignUp = React.lazy(() => import('./components/SignComponent/SignUp'))
 const SignIn = React.lazy(() => import('./components/SignComponent/SignIn'))
-const WorksContainer = React.lazy(() =>
-  import('./components/Works/WorksContainer')
-)
 
 const Container = styled.div`
   width: 100%;
