@@ -51,3 +51,50 @@ export const Text = styled.p`
 export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
 `
+export const Loader = styled.div`
+  border-radius: 50%;
+  color: ${(props) => props.theme.primaryBg};
+
+  position: absolute;
+  top: 35%;
+  left: calc(50% - 4em);
+  width: 8em;
+  height: 8em;
+  box-shadow: inset 0 0 0 1em;
+  transform: translateZ(0);
+  :before,
+  :after {
+    border-radius: 50%;
+    position: absolute;
+    content: '';
+  }
+  :before {
+    width: 4.2em;
+    height: 8.2em;
+    background: ${(props) => props.theme.containerBg};
+    border-radius: 8.2em 0 0 8.2em;
+    top: -0.1em;
+    left: -0.1em;
+    transform-origin: 4.1em 4.1em;
+    animation: load 2s infinite ease 1.5s;
+  }
+  :after {
+    width: 4.2em;
+    height: 8.2em;
+    background: ${(props) => props.theme.containerBg};
+    border-radius: 0 8.2em 8.2em 0;
+    top: -0.1em;
+    left: 3.9em;
+    transform-origin: 0.1em 4.1em;
+    animation: load 2s infinite ease;
+  }
+
+  @keyframes load {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`

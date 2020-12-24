@@ -2,9 +2,15 @@ import React from 'react'
 import Header from './components/Header/Header'
 import styled, { ThemeProvider } from 'styled-components'
 import useThemeMode from './styled/ThemeMode.js'
-import WorksContainer from './components/Works/WorksContainer'
+import GlobalStyles from './styled/GlobalStyles.js'
+
 import { Redirect, Route, Switch } from 'react-router-dom'
-const Sign = React.lazy(() => import('./components/SignComponent/Sign'))
+import { Loader } from './styled/StyledElements'
+const SignUp = React.lazy(() => import('./components/SignComponent/SignUp'))
+const SignIn = React.lazy(() => import('./components/SignComponent/SignIn'))
+const WorksContainer = React.lazy(() =>
+  import('./components/Works/WorksContainer')
+)
 
 const Container = styled.div`
   width: 100%;
@@ -20,14 +26,18 @@ function App() {
   const [theme, ThemePalette, setTheme] = useThemeMode()
   return (
     <ThemeProvider theme={ThemePalette}>
+      <GlobalStyles />
       <Container>
         <Header theme={theme} setTheme={setTheme} />
-        <Switch>
-          <Route path="/works" render={() => <WorksContainer />} />
-          <Route path="/signup" render={() => <Sign page="signup" />} />
-          <Route path="/signin" render={() => <Sign page="signin" />} />
-          <Redirect from="/" to="/works" />
-        </Switch>
+
+        <React.Suspense fallback={<Loader />}>
+          <Switch>
+            <Route path="/works" render={() => <WorksContainer />} />
+            <Route path="/signin" render={() => <SignIn />} />
+            <Route path="/signup" render={() => <SignUp />} />
+            <Redirect from="/" to="/works" />
+          </Switch>
+        </React.Suspense>
       </Container>
     </ThemeProvider>
   )

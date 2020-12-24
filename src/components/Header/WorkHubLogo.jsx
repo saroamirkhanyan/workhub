@@ -1,8 +1,9 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Device } from '../../styled/DeviceBreackpoints'
 
-const LogoStyled = styled.div`
+const LogoStyled = styled(NavLink)`
   grid-column: 1 / 3;
   background: url(${(props) => props.theme.LogoMob}), no-repeat;
   background-size: 100%;
@@ -26,7 +27,7 @@ const LogoStyled = styled.div`
 `
 
 function Logo() {
-  return <LogoStyled />
+  return <LogoStyled to="/works" />
 }
 
 export default Logo
