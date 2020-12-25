@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Device } from '../../styled/DeviceBreackpoints'
 
+//remember to change navlink to div version 0.0.2
 const LogoStyled = styled(NavLink)`
   grid-column: 1 / 3;
   background: url(${(props) => props.theme.LogoMob}), no-repeat;

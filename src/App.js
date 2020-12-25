@@ -5,7 +5,7 @@ import useThemeMode from './styled/ThemeMode.js'
 import GlobalStyles from './styled/GlobalStyles.js'
 
 import { Redirect, Route, Switch } from 'react-router-dom'
-import { Loader } from './styled/StyledElements'
+import { PagesLoader } from './styled/StyledElements'
 import WorksContainer from './components/Works/WorksContainer'
 const SignUp = React.lazy(() => import('./components/SignComponent/SignUp'))
 const SignIn = React.lazy(() => import('./components/SignComponent/SignIn'))
@@ -28,7 +28,7 @@ function App() {
       <Container>
         <Header theme={theme} setTheme={setTheme} />
 
-        <React.Suspense fallback={<Loader />}>
+        <React.Suspense fallback={<PagesLoader />}>
           <Switch>
             <Route path="/works" render={() => <WorksContainer />} />
             <Route path="/signin" render={() => <SignIn />} />

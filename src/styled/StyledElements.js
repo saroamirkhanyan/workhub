@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
 export const Button = styled.button`
   display: flex;
@@ -42,19 +42,24 @@ export const Input = styled.input`
 export const Text = styled.p`
   font-size: ${(props) => props.size}px;
   color: ${(props) => props.theme.primaryColor};
-  ${(props) =>
-    props.align &&
-    css`
-      text-align: ${(props) => props.align};
-    `}
 `
 export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
 `
-export const Loader = styled.div`
+
+const load = keyframes`
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  `
+
+// PagesLoader for pages change. in suspense
+export const PagesLoader = styled.div`
   border-radius: 50%;
   color: ${(props) => props.theme.primaryBg};
-
   position: absolute;
   top: 35%;
   left: calc(50% - 4em);
@@ -86,15 +91,46 @@ export const Loader = styled.div`
     top: -0.1em;
     left: 3.9em;
     transform-origin: 0.1em 4.1em;
-    animation: load 2s infinite ease;
+    animation: ${load} 2s infinite ease;
   }
+`
 
-  @keyframes load {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+//Loader for load Data
+
+export const DataLoader = styled.div`
+  margin-top: 10px;
+  border-radius: 50%;
+  color: ${(props) => props.theme.primaryBg};
+  position: relative;
+  justify-self: center;
+  width: 4em;
+  height: 4em;
+  box-shadow: inset 0 0 0 0.7em;
+  transform: translateZ(0);
+  :before,
+  :after {
+    border-radius: 50%;
+    position: absolute;
+    content: '';
+  }
+  :before {
+    width: 2.2em;
+    height: 4.2em;
+    background: ${(props) => props.theme.containerBg};
+    border-radius: 4.2em 0 0 4.2em;
+    top: -0.1em;
+    left: -0.1em;
+    transform-origin: 2.1em 2.1em;
+    animation: ${load} 2s infinite ease 1.5s;
+  }
+  :after {
+    width: 2.2em;
+    height: 4.2em;
+    background: ${(props) => props.theme.containerBg};
+    border-radius: 0 4.2em 4.2em 0;
+    top: -0.1em;
+    left: 1.9em;
+    transform-origin: 0.1em 2.1em;
+    animation: ${load} 2s infinite ease;
   }
 `

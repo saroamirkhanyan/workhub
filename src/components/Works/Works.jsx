@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { LoadCardsThunk } from '../../redux/WorkCard-reducer'
 import { Device } from '../../styled/DeviceBreackpoints'
-import { Text } from '../../styled/StyledElements'
+import { DataLoader } from '../../styled/StyledElements'
 import WorkCard from './WorkCard'
 
 const Main = styled.main`
@@ -72,11 +72,7 @@ const Works = React.memo(() => {
   return (
     <Main>
       <Article>{Cards}</Article>
-      {isCardsLoaded && !isCardsFinished && (
-        <Text size="30" align="center">
-          Ներբեռնում
-        </Text>
-      )}
+      {isCardsLoaded && !isCardsFinished && <DataLoader />}
     </Main>
   )
 })
