@@ -2,9 +2,6 @@ import { NavLink } from 'react-router-dom'
 import styled, { css, keyframes } from 'styled-components'
 
 export const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   outline: none;
   border: 0;
   border-radius: 10px;
@@ -97,18 +94,11 @@ export const Loader = styled.div`
       width: 4em;
       height: 4em;
       box-shadow: inset 0 0 0 0.7em;
-      transform: translateZ(0);
       :before,
       :after {
-        border-radius: 50%;
-        position: absolute;
-        content: '';
-        box-sizing: border-box;
-        top: -0.1em;
-        left: -0.1em;
         width: 4.2em;
         height: 4.2em;
-        border: 0.9em solid ${(props) => props.theme.containerBg};
+        border: 1em solid ${(props) => props.theme.containerBg};
         border-color: ${(props) => props.theme.containerBg} transparent
           transparent transparent;
       }

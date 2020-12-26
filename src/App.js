@@ -26,6 +26,7 @@ function App() {
       <GlobalStyles />
       <Container>
         <Header theme={theme} setTheme={setTheme} />
+
         <React.Suspense fallback={<Loader />}>
           <Switch>
             <Route path="/works" render={() => <WorksContainer />} />
