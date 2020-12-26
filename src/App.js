@@ -5,7 +5,7 @@ import useThemeMode from './styled/ThemeMode.js'
 import GlobalStyles from './styled/GlobalStyles.js'
 
 import { Redirect, Route, Switch } from 'react-router-dom'
-import { PagesLoader } from './styled/StyledElements'
+import { Loader } from './styled/StyledElements'
 import WorksContainer from './components/Works/WorksContainer'
 const SignUp = React.lazy(() => import('./components/SignComponent/SignUp'))
 const SignIn = React.lazy(() => import('./components/SignComponent/SignIn'))
@@ -17,7 +17,6 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-row-gap: 18px;
-  transition: all 0.3s ease-in-out;
 `
 
 function App() {
@@ -27,8 +26,7 @@ function App() {
       <GlobalStyles />
       <Container>
         <Header theme={theme} setTheme={setTheme} />
-
-        <React.Suspense fallback={<PagesLoader />}>
+        <React.Suspense fallback={<Loader />}>
           <Switch>
             <Route path="/works" render={() => <WorksContainer />} />
             <Route path="/signin" render={() => <SignIn />} />

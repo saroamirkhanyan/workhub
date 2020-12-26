@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { LoadCardsThunk } from '../../redux/WorkCard-reducer'
+import {
+  AddPageAction,
+  isFirstRenderAction,
+  LoadCardsThunk,
+} from '../../redux/WorkCard-reducer'
 import { Device } from '../../styled/DeviceBreackpoints'
-import { DataLoader } from '../../styled/StyledElements'
+import { Loader } from '../../styled/StyledElements'
 import WorkCard from './WorkCard'
 
 const Main = styled.main`
@@ -21,13 +25,16 @@ const Article = styled.article`
 `
 
 const Works = React.memo(() => {
-  const WorkCards = useSelector((state) => state.WorkCards.cards)
   const dispatch = useDispatch()
-  const [page, setPage] = useState(1)
+  const WorkCards = useSelector((state) => state.WorkCards.cards)
+  const page = useSelector((state) => state.WorkCards.page)
   const isCardsLoaded = useSelector((state) => state.WorkCards.isCardsLoaded)
+  const isFirstRender = useSelector((state) => state.WorkCards.isFirstRender)
   const isCardsFinished = useSelector(
     (state) => state.WorkCards.isCardsFinished
   )
+  const [isInEnd, setIsInEnd] = useState(false)
+
   useEffect(() => {
     const scrollListener = () => {
       const scrollTop = window.pageYOffset
@@ -39,7 +46,7 @@ const Works = React.memo(() => {
         !isCardsLoaded &&
         !isCardsFinished
       ) {
-        setPage(page + 1)
+        setIsInEnd(true)
       }
     }
     document.addEventListener('scroll', scrollListener)
@@ -49,21 +56,24 @@ const Works = React.memo(() => {
       document.removeEventListener('scroll', scrollListener)
       document.removeEventListener('touchmove', scrollListener)
     }
-  }, [dispatch, page, isCardsLoaded, isCardsFinished])
+  }, [dispatch, isCardsLoaded, isCardsFinished])
 
   useEffect(() => {
     const countOfPages = Math.round(window.innerHeight / 150)
-    console.log(isCardsFinished)
+    console.log(isInEnd, isFirstRender)
 
-    if (!isCardsFinished) {
+    if (!isCardsLoaded && (isInEnd || isFirstRender)) {
       dispatch(
         LoadCardsThunk({
           page,
           count: countOfPages,
         })
       )
+      if (isFirstRender) dispatch(isFirstRenderAction())
+      dispatch(AddPageAction())
+      setIsInEnd(false)
     }
-  }, [dispatch, page, isCardsFinished])
+  }, [dispatch, page, isCardsLoaded, isInEnd, isFirstRender])
 
   const Cards = WorkCards.map((cards) => (
     <WorkCard key={cards._id} {...cards} />
@@ -72,7 +82,7 @@ const Works = React.memo(() => {
   return (
     <Main>
       <Article>{Cards}</Article>
-      {isCardsLoaded && !isCardsFinished && <DataLoader />}
+      {isCardsLoaded && !isCardsFinished && <Loader small />}
     </Main>
   )
 })

@@ -47,6 +47,7 @@ export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
 `
 
+//loader animation
 const load = keyframes`
     0% {
       transform: rotate(0deg);
@@ -56,81 +57,60 @@ const load = keyframes`
     }
   `
 
-// PagesLoader for pages change. in suspense
-export const PagesLoader = styled.div`
+export const Loader = styled.div`
   border-radius: 50%;
   color: ${(props) => props.theme.primaryBg};
+  box-shadow: inset 0 0 0 0.8em;
   position: absolute;
   top: 35%;
   left: calc(50% - 4em);
   width: 8em;
   height: 8em;
-  box-shadow: inset 0 0 0 1em;
   transform: translateZ(0);
   :before,
   :after {
     border-radius: 50%;
     position: absolute;
     content: '';
-  }
-  :before {
-    width: 4.2em;
-    height: 8.2em;
-    background: ${(props) => props.theme.containerBg};
-    border-radius: 8.2em 0 0 8.2em;
+    box-sizing: border-box;
     top: -0.1em;
     left: -0.1em;
-    transform-origin: 4.1em 4.1em;
-    animation: load 2s infinite ease 1.5s;
-  }
-  :after {
-    width: 4.2em;
+    width: 8.2em;
     height: 8.2em;
-    background: ${(props) => props.theme.containerBg};
-    border-radius: 0 8.2em 8.2em 0;
-    top: -0.1em;
-    left: 3.9em;
-    transform-origin: 0.1em 4.1em;
-    animation: ${load} 2s infinite ease;
-  }
-`
-
-//Loader for load Data
-
-export const DataLoader = styled.div`
-  margin-top: 10px;
-  border-radius: 50%;
-  color: ${(props) => props.theme.primaryBg};
-  position: relative;
-  justify-self: center;
-  width: 4em;
-  height: 4em;
-  box-shadow: inset 0 0 0 0.7em;
-  transform: translateZ(0);
-  :before,
-  :after {
-    border-radius: 50%;
-    position: absolute;
-    content: '';
+    border: 1em solid ${(props) => props.theme.containerBg};
+    border-color: ${(props) => props.theme.containerBg} transparent transparent
+      transparent;
   }
   :before {
-    width: 2.2em;
-    height: 4.2em;
-    background: ${(props) => props.theme.containerBg};
-    border-radius: 4.2em 0 0 4.2em;
-    top: -0.1em;
-    left: -0.1em;
-    transform-origin: 2.1em 2.1em;
-    animation: ${load} 2s infinite ease 1.5s;
+    animation: ${load} 2s cubic-bezier(0.63, 0.83, 0.64, 0.83) infinite;
   }
   :after {
-    width: 2.2em;
-    height: 4.2em;
-    background: ${(props) => props.theme.containerBg};
-    border-radius: 0 4.2em 4.2em 0;
-    top: -0.1em;
-    left: 1.9em;
-    transform-origin: 0.1em 2.1em;
-    animation: ${load} 2s infinite ease;
+    animation: ${load} 2s cubic-bezier(0.15, 0.56, 0.27, 0.72) infinite;
   }
+  //its small loader
+  ${(props) =>
+    props.small &&
+    css`
+      position: relative;
+      justify-self: center;
+      left: 0;
+      width: 4em;
+      height: 4em;
+      box-shadow: inset 0 0 0 0.7em;
+      transform: translateZ(0);
+      :before,
+      :after {
+        border-radius: 50%;
+        position: absolute;
+        content: '';
+        box-sizing: border-box;
+        top: -0.1em;
+        left: -0.1em;
+        width: 4.2em;
+        height: 4.2em;
+        border: 0.9em solid ${(props) => props.theme.containerBg};
+        border-color: ${(props) => props.theme.containerBg} transparent
+          transparent transparent;
+      }
+    `}
 `

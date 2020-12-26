@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Input } from '../../styled/StyledElements'
 
-const SearchInputStyled = styled(Input)`
+const SearchInputStyled = styled(Input).attrs((props) => ({
+  maxLength: props.maxLength,
+}))`
   height: 55%;
   width: 90%;
   border-left: 2.5px solid ${(props) => props.theme.btnCol};
@@ -11,7 +13,7 @@ const SearchInputStyled = styled(Input)`
 `
 
 function SearchInput() {
-  return <SearchInputStyled placeholder="Փնտրել" />
+  return <SearchInputStyled placeholder="Փնտրել" maxLength="45" />
 }
 
 export default SearchInput
