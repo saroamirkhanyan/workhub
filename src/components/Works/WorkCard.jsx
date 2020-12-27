@@ -15,6 +15,7 @@ const WorkCardStyled = styled.section`
 const ButtonStyled = styled(Button)`
   margin-left: auto;
 `
+
 function WorkCard({ hashtags, price, description }) {
   return (
     <WorkCardStyled>

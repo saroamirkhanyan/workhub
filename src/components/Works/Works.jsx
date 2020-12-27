@@ -59,18 +59,18 @@ const Works = React.memo(() => {
   }, [dispatch, isCardsLoaded, isCardsFinished])
 
   useEffect(() => {
-    const countOfPages = Math.round(window.innerHeight / 150)
+    const count = Math.round(window.innerHeight / 150)
     console.log(isInEnd, isFirstRender)
 
     if (!isCardsLoaded && (isInEnd || isFirstRender)) {
       dispatch(
         LoadCardsThunk({
           page,
-          count: countOfPages,
+          count,
         })
       )
       if (isFirstRender) dispatch(isFirstRenderAction())
-      dispatch(AddPageAction())
+      dispatch(AddPageAction(page + 1))
       setIsInEnd(false)
     }
   }, [dispatch, page, isCardsLoaded, isInEnd, isFirstRender])

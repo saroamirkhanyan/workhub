@@ -1,10 +1,27 @@
 import * as axios from 'axios'
 
+const instance = axios.create({
+  baseURL: 'https://test-workhub-api.herokuapp.com',
+})
+
 export const LoadCards = {
   load({ page, count }) {
-    return axios
-      .get('https://test-workhub-api.herokuapp.com/works', {
+    return instance
+      .get('/works', {
         params: {
+          page,
+          count,
+        },
+      })
+      .then((response) => {
+        return response.data
+      })
+  },
+  searchCards({ query, page, count }) {
+    return instance
+      .get('/work/search', {
+        params: {
+          query,
           page,
           count,
         },
