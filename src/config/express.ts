@@ -1,10 +1,12 @@
+import * as fs from 'fs';
+import * as dotenv from 'dotenv';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as express from 'express';
 import * as logger from 'morgan';
 import * as path from 'path';
 import * as mongoose from 'mongoose';
-import { dotenvConfig } from '../utils/dotenv';
+
 import Routes from './routes';
 
 class Express {
@@ -50,7 +52,11 @@ class Express {
     if (process.env.NODE_ENV !== 'production')
       this.envFile += '.' + process.env.NODE_ENV;
     // Set env from file
-    dotenvConfig({ envFile: this.envFile });
+    const envFilePath = path.join(__dirname, this.envFile).trim();
+    const envConfig = dotenv.parse(fs.readFileSync(envFilePath));
+    for (const k in envConfig) {
+      process.env[k] = envConfig[k];
+    }
   }
 
   /**
