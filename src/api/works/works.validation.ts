@@ -7,9 +7,7 @@ export default class WorksValidation {
    *
    */
   public static getAll(data) {
-    console.log(paginateSchema);
-    const schema = Joi.object({
-      ...paginateSchema,
+    const schema = paginateSchema.append({
       searchQuery: Joi.string(),
     });
     return schema.validate(data);

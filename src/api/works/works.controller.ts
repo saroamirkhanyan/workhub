@@ -20,7 +20,7 @@ export default class WorksController {
 
       const { error } = WorksValidation.getAll({ page, limit, searchQuery });
 
-      if (error) throw new Error(error);
+      // if (error) return res.json(error);
 
       // Get data
       const queryOptions: any = {};
@@ -40,6 +40,7 @@ export default class WorksController {
       res.json(result);
     } catch (error) {
       //
+      console.log(error);
       // Error response
       res.json({ error });
     }
