@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "concurrently --kill-others \"npm run watch-ts\"",
     "serve": "npm run build-ts & npm run start",
+    "build": "npm run build-ts",
     "build-ts": "tsc -p src",
     "build:watch": "tsc -w -p src",
     "watch-ts": "tsc-watch -w -p src --onSuccess \"npm run start-dev\"",
