@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import Model from './users.model';
 
-export default class ExampleController {
+export default class UsersController {
   /**
    * Get all
    * @param {*} req
@@ -39,6 +39,8 @@ export default class ExampleController {
   public static async create(req: Request, res: Response, next: NextFunction) {
     //
     // Create model
+    console.log(req.body);
+    return;
     let model = new Model({
       title: 'Test title',
       subtitle: 'test subtitle',

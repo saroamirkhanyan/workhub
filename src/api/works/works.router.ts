@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import UsersController from './users.controller';
+import WorksController from './works.controller';
 
-export class UsersRouter {
+export class WorksRouter {
   public router: Router;
 
   /*--------  Constructor  --------*/
@@ -19,14 +19,14 @@ export class UsersRouter {
    * Init all routes in this router
    */
   init() {
-    this.router.get('/', UsersController.getAll);
-    this.router.post('/', UsersController.create);
+    this.router.get('/', WorksController.getAll);
+    this.router.post('/', WorksController.create);
   }
 }
 
 //
 // Create Router and export its configured Express.Router
-const UsersRoutes = new UsersRouter();
-UsersRoutes.init();
+const WorksRouters = new WorksRouter();
+WorksRouters.init();
 
-export default UsersRoutes.router;
+export default WorksRouters.router;

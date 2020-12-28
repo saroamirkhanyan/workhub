@@ -54,9 +54,8 @@ class Express {
     // Set env from file
     const envFilePath = path.join(__dirname, this.envFile).trim();
     const envConfig = dotenv.parse(fs.readFileSync(envFilePath));
-    for (const k in envConfig) {
-      process.env[k] = envConfig[k];
-    }
+    // merge envConfig and process.env
+    Object.assign(process.env, envConfig);
   }
 
   /**

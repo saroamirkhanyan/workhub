@@ -1,5 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import ExampleRouter from '../api/example/example.router';
+import UsersRouter from '../api/users/users.router';
+import WorksRouter from '../api/works/works.router';
 
 export default class Routes {
   public router: Router;
@@ -31,7 +32,8 @@ export default class Routes {
 
     //
     // Your routes goes here
-    this.app.use('/api/examples', ExampleRouter);
+    this.app.use('/api/users', UsersRouter);
+    this.app.use('/api/works', WorksRouter);
 
     /*--------  Main routes  --------*/
 
