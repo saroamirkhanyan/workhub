@@ -39,6 +39,10 @@ class Express {
     //
     // Routes
     this.setRoutes();
+
+    //
+    // Cors
+    this.setCors();
   }
 
   /*--------  Methods  --------*/
