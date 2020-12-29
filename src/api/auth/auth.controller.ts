@@ -1,56 +1,30 @@
 import { Request, Response, NextFunction } from 'express';
-import Model from './auth.model';
+import AuthValidator from './auth.validator';
+import UserModel from '../users/user.model';
 
 export default class AuthController {
   /**
-   * Get all
+   * Sign Up
    * @param {*} req
    * @param {*} res
    * @param {*} next
    */
-  public static async getAll(req: Request, res: Response, next: NextFunction) {
+  public static async signUp(req: Request, res: Response, next: NextFunction) {
     try {
-      //
-      // Get data
-      let result = await Model.find().exec();
-
-      //
-      // Response
-      res.send({
-        message: 'it works! We got all examples',
-        result: result,
+      // Get Inputs
+      const email: string = <string>req.body.email;
+      const name: string = <string>req.body.name;
+      const password: string = <string>req.body.name;
+      // Validation
+      const { error } = AuthValidator.signUp({ email, name, password });
+      if (error) throw new Error(error);
+      // check Email
+      const emailExist = await UserModel.findOne({
+        email: req.body.email,
       });
-    } catch (err) {
-      //
-      // Error response
-      res.send({
-        message: 'Could not get Examples',
-        err: err,
-      });
+      if (emailExist) return res.status(400).json({ error: 'email was taken' });
+    } catch (error) {
+      res.json(error);
     }
-  }
-
-  /**
-   * Create
-   * @param {*} req
-   * @param {*} res
-   * @param {*} next
-   */
-  public static async create(req: Request, res: Response, next: NextFunction) {
-    //
-    // Create model
-    let model = new Model({
-      title: 'Test title',
-      subtitle: 'test subtitle',
-    });
-
-    //
-    // Save
-    await model.save();
-
-    res.send({
-      message: 'Created!',
-      model: model,
-    });
   }
 }

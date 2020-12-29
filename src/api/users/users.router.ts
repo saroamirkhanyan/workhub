@@ -19,7 +19,6 @@ export class UsersRouter {
    * Init all routes in this router
    */
   init() {
-    this.router.get('/', UsersController.getAll);
     this.router.post('/', UsersController.create);
   }
 }

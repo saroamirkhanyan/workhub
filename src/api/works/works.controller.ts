@@ -16,7 +16,7 @@ export default class WorksController {
       const limit: number = parseInt(<string>req.query.limit);
       const searchQuery: string = <string>req.query.searchQuery;
 
-      // Paginate Validation
+      // Validation
 
       const { error } = WorksValidator.getAll({ page, limit, searchQuery });
 

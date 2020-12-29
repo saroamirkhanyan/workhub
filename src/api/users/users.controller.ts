@@ -1,35 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import Model from './users.model';
+import UsersValidator from './users.validator';
+import Model from './user.model';
 
 export default class UsersController {
-  /**
-   * Get all
-   * @param {*} req
-   * @param {*} res
-   * @param {*} next
-   */
-  public static async getAll(req: Request, res: Response, next: NextFunction) {
-    try {
-      //
-      // Get data
-      let result = await Model.find().exec();
-
-      //
-      // Response
-      res.send({
-        message: 'it works! We got all examples',
-        result: result,
-      });
-    } catch (err) {
-      //
-      // Error response
-      res.send({
-        message: 'Could not get Examples',
-        err: err,
-      });
-    }
-  }
-
   /**
    * Create
    * @param {*} req
@@ -38,21 +11,26 @@ export default class UsersController {
    */
   public static async create(req: Request, res: Response, next: NextFunction) {
     //
-    // Create model
-    console.log(req.body);
-    return;
-    let model = new Model({
-      title: 'Test title',
-      subtitle: 'test subtitle',
-    });
+    try {
+      // Validation
+      // const { error } = UsersValidator.create({});
 
-    //
-    // Save
-    await model.save();
+      // Create model
+      let model = new Model({
+        title: 'Test title',
+        subtitle: 'test subtitle',
+      });
 
-    res.send({
-      message: 'Created!',
-      model: model,
-    });
+      //
+      // Save
+      await model.save();
+
+      res.send({
+        message: 'Created!',
+        model: model,
+      });
+    } catch (error) {
+      res.json({ error: error });
+    }
   }
 }

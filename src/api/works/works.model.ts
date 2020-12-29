@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 import * as mongoosePaginate from 'mongoose-paginate-v2';
 
-let schema: Schema = new Schema({
+let WorkSchema: Schema = new Schema({
   userId: {
     type: String,
     required: true,
@@ -24,6 +24,6 @@ let schema: Schema = new Schema({
   },
 });
 
-schema.plugin(mongoosePaginate);
+WorkSchema.plugin(mongoosePaginate);
 
-export default model('Work', schema);
+export default model('Work', WorkSchema);

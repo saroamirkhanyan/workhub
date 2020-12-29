@@ -6,6 +6,7 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as path from 'path';
 import * as mongoose from 'mongoose';
+import * as cors from 'cors';
 
 import Routes from './routes';
 
@@ -104,6 +105,13 @@ class Express {
     //
     // Create Routes, and export its configured Express.Router
     new Routes(this.app);
+  }
+
+  /**
+   * Set Cors
+   */
+  private setCors() {
+    this.app.use(cors());
   }
 }
 
