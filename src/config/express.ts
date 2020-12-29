@@ -39,10 +39,6 @@ class Express {
     //
     // Routes
     this.setRoutes();
-
-    //
-    // Cors
-    this.setCors();
   }
 
   /*--------  Methods  --------*/
@@ -91,6 +87,9 @@ class Express {
 
     // Add cookie parser
     this.app.use(cookieParser());
+
+    // set Cors
+    this.app.use(cors());
   }
 
   /**
@@ -109,13 +108,6 @@ class Express {
     //
     // Create Routes, and export its configured Express.Router
     new Routes(this.app);
-  }
-
-  /**
-   * Set Cors
-   */
-  private setCors() {
-    this.app.use(cors());
   }
 }
 
