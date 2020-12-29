@@ -1,6 +1,6 @@
 import * as Joi from '@hapi/joi';
 import paginateSchema from '../paginate/paginate.schema';
-export default class WorksValidation {
+export default class WorksValidator {
   /**
    *
    * @param data

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction, query } from 'express';
-import WorksValidation from './works.validation';
+import WorksValidator from './works.validator';
 import Model from './works.model';
 
 export default class WorksController {
@@ -18,7 +18,7 @@ export default class WorksController {
 
       // Paginate Validation
 
-      const { error } = WorksValidation.getAll({ page, limit, searchQuery });
+      const { error } = WorksValidator.getAll({ page, limit, searchQuery });
 
       if (error) throw new Error(error);
 
