@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import {
-  AddPageAction,
   isFirstRenderAction,
   LoadCardsThunk,
 } from '../../redux/WorkCard-reducer'
@@ -26,13 +25,8 @@ const Article = styled.article`
 
 const Works = React.memo(() => {
   const dispatch = useDispatch()
-  const WorkCards = useSelector((state) => state.WorkCards.cards)
-  const page = useSelector((state) => state.WorkCards.page)
-  const isCardsLoaded = useSelector((state) => state.WorkCards.isCardsLoaded)
-  const isFirstRender = useSelector((state) => state.WorkCards.isFirstRender)
-  const isCardsFinished = useSelector(
-    (state) => state.WorkCards.isCardsFinished
-  )
+  const workCards = useSelector((state) => state.WorkCards)
+
   const [isInEnd, setIsInEnd] = useState(false)
 
   useEffect(() => {
@@ -40,12 +34,14 @@ const Works = React.memo(() => {
       const scrollTop = window.pageYOffset
       const documentHeight = document.body.scrollHeight
       const windowHeight = window.innerHeight
+      console.log(workCards.isCardsLoaded)
 
       if (
         scrollTop + windowHeight >= documentHeight &&
-        !isCardsLoaded &&
-        !isCardsFinished
+        !workCards.isCardsLoaded &&
+        workCards.hasNextPage
       ) {
+        console.log(workCards.isCardsLoaded)
         setIsInEnd(true)
       }
     }
@@ -56,33 +52,40 @@ const Works = React.memo(() => {
       document.removeEventListener('scroll', scrollListener)
       document.removeEventListener('touchmove', scrollListener)
     }
-  }, [dispatch, isCardsLoaded, isCardsFinished])
+  }, [dispatch, workCards.isCardsLoaded, workCards.hasNextPage])
 
   useEffect(() => {
-    const count = Math.round(window.innerHeight / 150)
-    console.log(isInEnd, isFirstRender)
+    const limit = Math.round(window.innerHeight / 150)
 
-    if (!isCardsLoaded && (isInEnd || isFirstRender)) {
+    if (!workCards.isCardsLoaded && (isInEnd || workCards.isFirstRender)) {
       dispatch(
         LoadCardsThunk({
-          page,
-          count,
+          page: workCards.nextPage,
+          limit,
         })
       )
-      if (isFirstRender) dispatch(isFirstRenderAction())
-      dispatch(AddPageAction(page + 1))
+      if (workCards.isFirstRender) dispatch(isFirstRenderAction())
       setIsInEnd(false)
     }
-  }, [dispatch, page, isCardsLoaded, isInEnd, isFirstRender])
+  }, [
+    dispatch,
+    workCards.nextPage,
+    workCards.isCardsLoaded,
+    isInEnd,
+    workCards.isFirstRender,
+    workCards.page,
+  ])
 
-  const Cards = WorkCards.map((cards) => (
+  const Cards = workCards.docs.map((cards) => (
     <WorkCard key={cards._id} {...cards} />
   ))
 
   return (
     <Main>
       <Article>{Cards}</Article>
-      {isCardsLoaded && !isCardsFinished && <Loader small />}
+      {workCards.isCardsLoaded && !workCards.isCardsFinished && (
+        <Loader small />
+      )}
     </Main>
   )
 })

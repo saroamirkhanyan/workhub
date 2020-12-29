@@ -5,25 +5,40 @@ const instance = axios.create({
 })
 
 export const LoadCards = {
-  load({ page, count }) {
+  load({ searchQuery, page, limit }) {
     return instance
-      .get('/works', {
+      .get('/api/works', {
         params: {
           page,
-          count,
+          limit,
+          searchQuery,
         },
       })
       .then((response) => {
         return response.data
       })
   },
-  searchCards({ query, page, count }) {
+}
+
+export const Sign = {
+  signIn({ login, password }) {
     return instance
-      .get('/work/search', {
+      .get('/signIn', {
         params: {
-          query,
-          page,
-          count,
+          login,
+          password,
+        },
+      })
+      .then((response) => {
+        return response.data
+      })
+  },
+  signUp({ login, password }) {
+    return instance
+      .get('/signUp', {
+        params: {
+          login,
+          password,
         },
       })
       .then((response) => {

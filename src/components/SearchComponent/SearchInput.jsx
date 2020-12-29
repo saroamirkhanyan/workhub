@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { SearchCards } from '../../redux/WorkCard-reducer'
+import { LoadCardsThunk } from '../../redux/WorkCard-reducer'
 import { Input } from '../../styled/StyledElements'
+import { useHistory } from 'react-router-dom'
 
 const SearchInputStyled = styled(Input).attrs((props) => ({
   maxLength: props.maxLength,
@@ -17,24 +18,46 @@ const SearchInputStyled = styled(Input).attrs((props) => ({
 function SearchInput() {
   const dispatch = useDispatch()
   const [searchCardsTimeout, setSearchCardsTimeout] = useState(null)
+  const [value, setValue] = useState('')
+  const [isDispatched, setIsDispatched] = useState(false)
+  let history = useHistory()
+
+  const SearchCards = useCallback(
+    (text) => {
+      if (!isDispatched) {
+        const limit = Math.round(window.innerHeight / 150)
+        dispatch(LoadCardsThunk({ searchQuery: text, page: 1, limit }))
+        console.log(text)
+        history.push(`/works/${text}`)
+        setIsDispatched(true)
+      }
+    },
+    [dispatch, history, isDispatched]
+  )
 
   const handleOnChange = (event) => {
+    setValue(event.target.value)
     clearTimeout(searchCardsTimeout)
     setSearchCardsTimeout(
       setTimeout(() => {
-        if (event.target.value) {
-          const count = Math.round(window.innerHeight / 150)
-          dispatch(SearchCards({ query: event.target.value, page: 1, count }))
+        if (value) {
+          SearchCards(value)
         }
       }, 2000)
     )
   }
-
+  const onEnterClick = (event) => {
+    if (event.keyCode === 13) {
+      SearchCards(value)
+    }
+  }
   return (
     <SearchInputStyled
       placeholder="Փնտրել"
       maxLength="45"
       onChange={handleOnChange}
+      onKeyDown={onEnterClick}
+      value={value}
     />
   )
 }

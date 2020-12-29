@@ -1,7 +1,8 @@
 import React from 'react'
+import SignTitle from './SignTitle'
 
 function SignIn() {
-  return <h1>Signin</h1>
+  return <SignTitle>Մուտք գործել</SignTitle>
 }
 
 export default SignIn

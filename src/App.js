@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import useThemeMode from './styled/ThemeMode.js'
 import GlobalStyles from './styled/GlobalStyles.js'
 
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { Loader } from './styled/StyledElements'
 import WorksContainer from './components/Works/WorksContainer'
 const SignUp = React.lazy(() => import('./components/SignComponent/SignUp'))
@@ -29,10 +29,9 @@ function App() {
 
         <React.Suspense fallback={<Loader />}>
           <Switch>
-            <Route path="/works" render={() => <WorksContainer />} />
+            <Route path={['/', '/works']} render={() => <WorksContainer />} />
             <Route path="/signin" render={() => <SignIn />} />
             <Route path="/signup" render={() => <SignUp />} />
-            <Redirect from="/" to="/works" />
           </Switch>
         </React.Suspense>
       </Container>
