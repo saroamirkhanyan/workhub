@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import WorksController from './works.controller';
+import AuthController from './auth.controller';
 
-export class WorksRouter {
+export class AuthRouter {
   public router: Router;
 
   /*--------  Constructor  --------*/
@@ -19,14 +19,14 @@ export class WorksRouter {
    * Init all routes in this router
    */
   init() {
-    this.router.get('/', WorksController.getAll);
-    this.router.post('/', WorksController.create);
+    this.router.get('/', AuthController.getAll);
+    this.router.post('/', AuthController.create);
   }
 }
 
 //
 // Create Router and export its configured Express.Router
-const worksRouters = new WorksRouter();
-worksRouters.init();
+const authRoutes = new AuthRouter();
+authRoutes.init();
 
-export default worksRouters.router;
+export default authRoutes.router;
