@@ -35,6 +35,10 @@ export default class AuthController {
         name,
         password: hashedPassword,
       });
+      try {
+      } catch (error) {
+        res.json({ error: error });
+      }
     } catch (error) {
       res.json(error);
     }
