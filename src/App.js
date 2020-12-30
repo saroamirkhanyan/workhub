@@ -29,9 +29,13 @@ function App() {
 
         <React.Suspense fallback={<Loader />}>
           <Switch>
-            <Route path={['/', '/works']} render={() => <WorksContainer />} />
             <Route path="/signin" render={() => <SignIn />} />
             <Route path="/signup" render={() => <SignUp />} />
+            {/* нужно  чтоб было /?searchQuery=something и searchQuery не обязателень*/}
+            <Route
+              path={'//:searchQuery/:something'}
+              render={() => <WorksContainer />}
+            />
           </Switch>
         </React.Suspense>
       </Container>

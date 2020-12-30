@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { LoadCardsThunk } from '../../redux/WorkCard-reducer'
 import { Input } from '../../styled/StyledElements'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation, useParams } from 'react-router-dom'
 
 const SearchInputStyled = styled(Input).attrs((props) => ({
   maxLength: props.maxLength,
@@ -18,37 +18,41 @@ const SearchInputStyled = styled(Input).attrs((props) => ({
 function SearchInput() {
   const dispatch = useDispatch()
   const [searchCardsTimeout, setSearchCardsTimeout] = useState(null)
-  const [value, setValue] = useState('')
-  const [isDispatched, setIsDispatched] = useState(false)
   let history = useHistory()
+  let location = useLocation()
+  let params = useParams()
+  useEffect(() => {
+    const limit = Math.round(window.innerHeight / 150)
+    console.log(location, params)
+    debugger
+    // dispatch(LoadCardsThunk({ searchQuery: location, page: 1, limit }))
+  }, [location, dispatch])
 
   const SearchCards = useCallback(
     (text) => {
-      if (!isDispatched) {
-        const limit = Math.round(window.innerHeight / 150)
-        dispatch(LoadCardsThunk({ searchQuery: text, page: 1, limit }))
+      if (text) {
         console.log(text)
-        history.push(`/works/${text}`)
-        setIsDispatched(true)
+        history.push(`/works?searchQuery=${text}`)
       }
     },
-    [dispatch, history, isDispatched]
+    [history]
   )
 
   const handleOnChange = (event) => {
-    setValue(event.target.value)
+    const targetValue = event.target.value
     clearTimeout(searchCardsTimeout)
     setSearchCardsTimeout(
       setTimeout(() => {
-        if (value) {
-          SearchCards(value)
-        }
+        clearTimeout(searchCardsTimeout)
+        SearchCards(targetValue)
       }, 2000)
     )
   }
   const onEnterClick = (event) => {
     if (event.keyCode === 13) {
-      SearchCards(value)
+      const targetValue = event.target.value
+      clearTimeout(searchCardsTimeout)
+      SearchCards(targetValue)
     }
   }
   return (
@@ -57,7 +61,6 @@ function SearchInput() {
       maxLength="45"
       onChange={handleOnChange}
       onKeyDown={onEnterClick}
-      value={value}
     />
   )
 }
