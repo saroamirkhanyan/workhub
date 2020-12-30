@@ -34,8 +34,8 @@ function SearchInput(props) {
   const SearchCards = useCallback(
     (text) => {
       if (text) {
-        console.log(text);
-        history.push(`/?searchQuery=${text}`);
+        const encodedText = encodeURIComponent(text);
+        history.push(`/?searchQuery=${encodedText}`);
       }
     },
     [history]
