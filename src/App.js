@@ -33,7 +33,7 @@ function App() {
             <Route path="/signup" render={() => <SignUp />} />
             {/* нужно  чтоб было /?searchQuery=something и searchQuery не обязателень*/}
             <Route
-              path={'//:searchQuery/:something'}
+              path={'/'}
               render={() => <WorksContainer />}
             />
           </Switch>
