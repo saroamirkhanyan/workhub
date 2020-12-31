@@ -28,7 +28,7 @@ const LogoStyled = styled(NavLink)`
 `
 
 function Logo() {
-  return <LogoStyled to="/works" />
+  return <LogoStyled to="/" />
 }
 
 export default Logo

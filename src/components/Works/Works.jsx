@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-import {
-  isFirstRenderAction,
-  LoadCardsThunk,
-} from '../../redux/WorkCard-reducer'
 import { Device } from '../../styled/DeviceBreackpoints'
 import { Loader } from '../../styled/StyledElements'
+import LoadCardsInEnd from './ListenersForLoadCards/LoadCardsInEnd'
+import ScrollListener from './ListenersForLoadCards/ScrollListener'
+import UrlWathcer from './ListenersForLoadCards/UrlWatcher'
 import WorkCard from './WorkCard'
 
 const Main = styled.main`
@@ -24,57 +23,15 @@ const Article = styled.article`
 `
 
 const Works = React.memo(() => {
-  const dispatch = useDispatch()
   const workCards = useSelector((state) => state.WorkCards)
-
   const [isInEnd, setIsInEnd] = useState(false)
 
-  useEffect(() => {
-    const scrollListener = () => {
-      const scrollTop = window.pageYOffset
-      const documentHeight = document.body.scrollHeight
-      const windowHeight = window.innerHeight
-      console.log(workCards.isCardsLoaded)
+  //if scroll in end setIsInEnd( true ) and then LoadCardsIsInEnd will start
+  ScrollListener({ isInEnd, setIsInEnd })
+  LoadCardsInEnd({ isInEnd, setIsInEnd })
 
-      if (
-        scrollTop + windowHeight >= documentHeight &&
-        !workCards.isCardsLoaded &&
-        workCards.hasNextPage
-      ) {
-        console.log(workCards.isCardsLoaded)
-        setIsInEnd(true)
-      }
-    }
-    document.addEventListener('scroll', scrollListener)
-    document.addEventListener('touchmove', scrollListener)
-
-    return () => {
-      document.removeEventListener('scroll', scrollListener)
-      document.removeEventListener('touchmove', scrollListener)
-    }
-  }, [dispatch, workCards.isCardsLoaded, workCards.hasNextPage])
-
-  useEffect(() => {
-    const limit = Math.round(window.innerHeight / 150)
-
-    if (!workCards.isCardsLoaded && (isInEnd || workCards.isFirstRender)) {
-      dispatch(
-        LoadCardsThunk({
-          page: workCards.nextPage,
-          limit,
-        })
-      )
-      if (workCards.isFirstRender) dispatch(isFirstRenderAction())
-      setIsInEnd(false)
-    }
-  }, [
-    dispatch,
-    workCards.nextPage,
-    workCards.isCardsLoaded,
-    isInEnd,
-    workCards.isFirstRender,
-    workCards.page,
-  ])
+  //watch the url and when url change it load data "wonderful English"
+  UrlWathcer()
 
   const Cards = workCards.docs.map((cards) => (
     <WorkCard key={cards._id} {...cards} />
