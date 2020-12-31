@@ -8,6 +8,7 @@ function LoadCardsInEnd({ isInEnd, setIsInEnd }) {
   const { searchQuery } = useParams()
   useEffect(() => {
     if (!workCards.isCardsLoaded && isInEnd) {
+      console.log('Load cards')
       const limit = Math.round(window.innerHeight / 150)
       dispatch(
         LoadCardsThunk({

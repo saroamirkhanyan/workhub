@@ -38,7 +38,7 @@ const WorkCardReducer = (state = InitalState, action) => {
     case RESET_CARDS: {
       return {
         ...state,
-        docs: [],
+        ...action.docsAndOther,
       }
     }
     case IS_FIRST_RENDER: {
@@ -60,21 +60,27 @@ export const IsCardsLoaded = (isLoaded) => ({
   isLoaded,
 })
 
-const LoadCardsAction = (docsAndOther) => ({ type: LOAD_CARDS, docsAndOther })
-const ResetSearchCardsAction = () => ({
-  type: RESET_CARDS,
+const LoadCardsAction = (docsAndOther, loadOrReset) => ({
+  type: loadOrReset,
+  docsAndOther,
 })
 
 export const LoadCardsThunk = ({ page, limit, searchQuery }) => async (
   dispatch
 ) => {
-  if (searchQuery) {
-    dispatch(ResetSearchCardsAction())
-  }
   dispatch(IsCardsLoaded(true))
   const response = await LoadCards.load({ page, limit, searchQuery })
   dispatch(IsCardsLoaded(false))
-  dispatch(LoadCardsAction(response))
+  dispatch(LoadCardsAction(response, LOAD_CARDS))
+}
+
+export const ResetSearchCards = ({ page, limit, searchQuery }) => async (
+  dispatch
+) => {
+  dispatch(IsCardsLoaded(true))
+  const response = await LoadCards.load({ page, limit, searchQuery })
+  dispatch(IsCardsLoaded(false))
+  dispatch(LoadCardsAction(response, RESET_CARDS))
 }
 
 export default WorkCardReducer

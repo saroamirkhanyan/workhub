@@ -10,7 +10,6 @@ function ScrollListener({ isInEnd, setIsInEnd }) {
       const scrollTop = window.pageYOffset
       const documentHeight = document.body.scrollHeight
       const windowHeight = window.innerHeight
-
       if (
         scrollTop + windowHeight >= documentHeight &&
         !workCards.isCardsLoaded &&

@@ -30,7 +30,8 @@ const Works = React.memo(() => {
   ScrollListener({ isInEnd, setIsInEnd })
   LoadCardsInEnd({ isInEnd, setIsInEnd })
 
-  //watch the url and when url change it load data "wonderful English"
+  //watch the url and when url change it load Cards
+  //"wonderful English"
   UrlWathcer()
 
   const Cards = workCards.docs.map((cards) => (
