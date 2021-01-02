@@ -12,7 +12,7 @@ function ScrollListener({ isInEnd, setIsInEnd }) {
       const windowHeight = window.innerHeight
       if (
         scrollTop + windowHeight >= documentHeight &&
-        !workCards.isCardsLoaded &&
+        !workCards.IsCardsLoadedAction &&
         workCards.hasNextPage
       ) {
         setIsInEnd(true)
@@ -25,7 +25,12 @@ function ScrollListener({ isInEnd, setIsInEnd }) {
       document.removeEventListener('scroll', scrollListener)
       document.removeEventListener('touchmove', scrollListener)
     }
-  }, [dispatch, workCards.isCardsLoaded, workCards.hasNextPage, setIsInEnd])
+  }, [
+    dispatch,
+    workCards.IsCardsLoadedAction,
+    workCards.hasNextPage,
+    setIsInEnd,
+  ])
 }
 
 export default ScrollListener

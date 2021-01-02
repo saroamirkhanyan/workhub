@@ -19,9 +19,9 @@ const SignReducer = (state = InitalState, action) => {
 }
 
 // export const LoadCardsThunk = ({ page, limit }) => async (dispatch) => {
-//   dispatch(IsCardsLoaded(true))
+//   dispatch(IsCardsLoadedAction(true))
 //   const response = await LoadCards.load({ page, limit })
-//   dispatch(IsCardsLoaded(false))
+//   dispatch(IsCardsLoadedAction(false))
 //   dispatch(LoadCardsAction(response))
 //   const IsFinished = response.length < 1
 //   dispatch(IsCardsFinishedAction(IsFinished))

@@ -1,20 +1,24 @@
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { ResetSearchCards } from '../../../redux/WorkCard-reducer'
-// import { isFirstRenderAction } from '../../../redux/WorkCard-reducer'
+import {
+  LoadOrResetSearchCards,
+  RESET_CARDS,
+  DoesNotExistAction,
+} from '../../../redux/WorkCard-reducer'
+import GetSearchQueryParam from './GetSearchQueryParam'
 
 function UrlWathcer() {
-  const { searchQuery } = useParams()
+  const searchQuery = GetSearchQueryParam()
   const dispatch = useDispatch()
-  // const isFirstRender = useSelector((state) => state.WorkCards.isFirstRender)
 
   useEffect(() => {
-    if (true) {
-      console.log('urlChange')
+    if (searchQuery !== '') {
       const limit = Math.round(window.innerHeight / 150)
-      dispatch(ResetSearchCards({ searchQuery, page: 1, limit }))
-      // dispatch(isFirstRenderAction())
+      dispatch(
+        LoadOrResetSearchCards({ searchQuery, page: 1, limit }, RESET_CARDS)
+      )
+    } else {
+      dispatch(DoesNotExistAction(false))
     }
   }, [dispatch, searchQuery])
 }

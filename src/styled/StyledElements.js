@@ -39,6 +39,11 @@ export const Input = styled.input`
 export const Text = styled.p`
   font-size: ${(props) => props.size}px;
   color: ${(props) => props.theme.primaryColor};
+  ${(props) =>
+    props.align &&
+    css`
+      text-align: ${props.align};
+    `}
 `
 export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
@@ -98,9 +103,9 @@ export const Loader = styled.div`
       :after {
         width: 4.2em;
         height: 4.2em;
-        border: 1em solid ${(props) => props.theme.containerBg};
-        border-color: ${(props) => props.theme.containerBg} transparent
-          transparent transparent;
+        border: 1em solid ${props.theme.containerBg};
+        border-color: ${props.theme.containerBg} transparent transparent
+          transparent;
       }
     `}
 `

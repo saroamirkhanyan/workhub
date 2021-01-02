@@ -31,11 +31,7 @@ function App() {
           <Switch>
             <Route path="/signin" render={() => <SignIn />} />
             <Route path="/signup" render={() => <SignUp />} />
-            <Route
-              exact
-              path={['/', '/searchQuery=:searchQuery']}
-              render={() => <WorksContainer />}
-            />
+            <Route exact path={'/'} render={() => <WorksContainer />} />
           </Switch>
         </React.Suspense>
       </Container>

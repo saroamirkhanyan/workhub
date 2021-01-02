@@ -1,7 +1,9 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Input } from '../../styled/StyledElements'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { RESET_CARDS, LoadCardsAction } from '../../redux/WorkCard-reducer'
 
 const SearchInputStyled = styled(Input).attrs((props) => ({
   maxLength: props.maxLength,
@@ -16,14 +18,15 @@ const SearchInputStyled = styled(Input).attrs((props) => ({
 function SearchInput() {
   const [searchCardsTimeout, setSearchCardsTimeout] = useState(null)
   let history = useHistory()
+  const dispatch = useDispatch()
 
-  const SearchCards = useCallback(
-    (text) => {
+  const SearchCards = (text) => {
+    if (text) {
       clearTimeout(searchCardsTimeout)
-      history.push(`/searchQuery=${text}`)
-    },
-    [history, searchCardsTimeout]
-  )
+      history.push(`/?searchQuery=${text}`)
+      dispatch(LoadCardsAction({ docs: [] }, RESET_CARDS))
+    }
+  }
 
   const handleOnChange = (event) => {
     const value = event.target.value
