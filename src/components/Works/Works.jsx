@@ -25,11 +25,11 @@ const Article = styled.article`
 
 const Works = React.memo(() => {
   const workCards = useSelector((state) => state.WorkCards)
-  const [isInEnd, setIsInEnd] = useState(false)
+  const [isInPageEnd, setIsInPageEnd] = useState(false)
   const dispatch = useDispatch()
-  //if scroll in end setIsInEnd( true ) and then LoadCardsIsInEnd will start
-  ScrollListener({ isInEnd, setIsInEnd })
-  LoadCardsInEnd({ isInEnd, setIsInEnd })
+  //if scroll in end setIsInPageEnd( true ) and then LoadCardsisInPageEnd will start
+  ScrollListener({ isInPageEnd, setIsInPageEnd })
+  LoadCardsInEnd({ isInPageEnd, setIsInPageEnd })
 
   //watch the url and when url change it load Cards
   //"wonderful English"
@@ -43,13 +43,13 @@ const Works = React.memo(() => {
   const Cards = workCards.cards.map((cards) => (
     <WorkCard key={cards._id} {...cards} />
   ))
+  const isAppearLoader = workCards.IsCardsLoadedAction &&
+    !workCards.isCardsFinished && <Loader small />
 
   return (
     <Main>
       <Article>{Cards}</Article>
-      {workCards.IsCardsLoadedAction && !workCards.isCardsFinished && (
-        <Loader small />
-      )}
+      {isAppearLoader}
       <IsExistWork />
     </Main>
   )

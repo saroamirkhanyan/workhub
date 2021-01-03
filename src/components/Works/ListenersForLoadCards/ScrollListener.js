@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 
-function ScrollListener({ isInEnd, setIsInEnd }) {
+function ScrollListener({ isInPageEnd, setIsInPageEnd }) {
   const dispatch = useDispatch()
   const workCards = useSelector((state) => state.WorkCards)
 
@@ -15,7 +15,7 @@ function ScrollListener({ isInEnd, setIsInEnd }) {
         !workCards.IsCardsLoadedAction &&
         workCards.hasNextPage
       ) {
-        setIsInEnd(true)
+        setIsInPageEnd(true)
       }
     }
     document.addEventListener('scroll', scrollListener)
@@ -29,7 +29,7 @@ function ScrollListener({ isInEnd, setIsInEnd }) {
     dispatch,
     workCards.IsCardsLoadedAction,
     workCards.hasNextPage,
-    setIsInEnd,
+    setIsInPageEnd,
   ])
 }
 

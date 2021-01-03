@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Text, Wrapper } from '../../styled/StyledElements'
-import CardDescription from './CardDescription'
+import CardHashtagsAndButton from './CardHashtagsAndButton'
 
 const WorkCardStyled = styled.section`
   background-color: ${(props) => props.theme.primaryBg};
@@ -12,22 +11,16 @@ const WorkCardStyled = styled.section`
   flex-direction: column;
   row-gap: 10px;
 `
-const ButtonStyled = styled(Button)`
-  margin-left: auto;
+const CardDescription = styled.h1`
+  font-size: 18px;
+  padding: 10px;
 `
 
-function WorkCard({ hashtags, price, description }) {
+function WorkCard({ description, ...props }) {
   return (
     <WorkCardStyled>
       <CardDescription>{description}</CardDescription>
-      <Wrapper justify="space-between" align="center" gap="15">
-        <Text size="15">
-          {hashtags.map((hashtag) => '#' + hashtag).join(' ')}
-        </Text>
-        <ButtonStyled padY="5" padX="15" size="20px">
-          {price}
-        </ButtonStyled>
-      </Wrapper>
+      <CardHashtagsAndButton {...props} />
     </WorkCardStyled>
   )
 }

@@ -6,7 +6,7 @@ import GlobalStyles from './styled/GlobalStyles.js'
 
 import { Route, Switch } from 'react-router-dom'
 import { Loader } from './styled/StyledElements'
-import WorksContainer from './components/Works/WorksContainer'
+import WorksContainer from './components/Works/WorksPage'
 const SignUp = React.lazy(() => import('./components/SignComponent/SignUp'))
 const SignIn = React.lazy(() => import('./components/SignComponent/SignIn'))
 
@@ -31,7 +31,7 @@ function App() {
           <Switch>
             <Route path="/signin" render={() => <SignIn />} />
             <Route path="/signup" render={() => <SignUp />} />
-            <Route exact path={'/'} render={() => <WorksContainer />} />
+            <Route exact path="/" render={() => <WorksContainer />} />
           </Switch>
         </React.Suspense>
       </Container>

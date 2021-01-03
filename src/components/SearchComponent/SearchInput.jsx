@@ -4,6 +4,7 @@ import { Input } from '../../styled/StyledElements'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { RESET_CARDS, LoadCardsAction } from '../../redux/WorkCard-reducer'
+import GetSearchQueryParam from '../Works/ListenersForLoadCards/GetSearchQueryParam'
 
 const SearchInputStyled = styled(Input).attrs((props) => ({
   maxLength: props.maxLength,
@@ -19,38 +20,41 @@ function SearchInput() {
   const [searchCardsTimeout, setSearchCardsTimeout] = useState(null)
   let history = useHistory()
   const dispatch = useDispatch()
+  const SearchQuery = GetSearchQueryParam()
+  const [SearchInputValue, setSearchInputValue] = useState(SearchQuery || '')
 
-  const SearchCards = (text) => {
-    if (text) {
+  const SearchCards = (value) => {
+    if (value !== '' && value !== SearchQuery) {
       clearTimeout(searchCardsTimeout)
-      history.push(`/?searchQuery=${text}`)
+      history.push(`/?searchQuery=${value}`)
       dispatch(LoadCardsAction({ docs: [] }, RESET_CARDS))
     }
   }
 
   const handleOnChange = (event) => {
-    const value = event.target.value
     clearTimeout(searchCardsTimeout)
+    setSearchInputValue(event.target.value)
+    console.log(SearchInputValue)
     setSearchCardsTimeout(
       setTimeout(() => {
-        clearTimeout(searchCardsTimeout)
-        SearchCards(value)
+        SearchCards(event.target.value)
       }, 2000)
     )
   }
-  const onEnterClick = (event) => {
-    if (event.keyCode === 13) {
-      SearchCards(event.target.value)
-    }
+  const onSubmit = (event) => {
+    event.preventDefault()
+    SearchCards(SearchInputValue)
   }
 
   return (
-    <SearchInputStyled
-      placeholder="Փնտրել"
-      maxLength="45"
-      onChange={handleOnChange}
-      onKeyDown={onEnterClick}
-    />
+    <form onSubmit={onSubmit}>
+      <SearchInputStyled
+        placeholder="Փնտրել"
+        maxLength="45"
+        value={SearchInputValue}
+        onChange={handleOnChange}
+      />
+    </form>
   )
 }
 

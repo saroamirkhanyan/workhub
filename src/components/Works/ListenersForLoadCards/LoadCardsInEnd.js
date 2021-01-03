@@ -5,13 +5,13 @@ import {
   LOAD_CARDS,
 } from '../../../redux/WorkCard-reducer'
 import GetSearchQueryParam from './GetSearchQueryParam'
-function LoadCardsInEnd({ isInEnd, setIsInEnd }) {
+function LoadCardsInEnd({ isInPageEnd, setIsInPageEnd }) {
   const dispatch = useDispatch()
   const workCards = useSelector((state) => state.WorkCards)
   const searchQuery = GetSearchQueryParam()
 
   useEffect(() => {
-    if (!workCards.IsCardsLoadedAction && isInEnd) {
+    if (!workCards.IsCardsLoadedAction && isInPageEnd) {
       const limit = Math.round(window.innerHeight / 150)
 
       dispatch(
@@ -24,16 +24,16 @@ function LoadCardsInEnd({ isInEnd, setIsInEnd }) {
           LOAD_CARDS
         )
       )
-      setIsInEnd(false)
+      setIsInPageEnd(false)
     }
   }, [
     dispatch,
     workCards.nextPage,
     workCards.IsCardsLoadedAction,
-    isInEnd,
+    isInPageEnd,
     workCards.isFirstRender,
     workCards.page,
-    setIsInEnd,
+    setIsInPageEnd,
     searchQuery,
   ])
 }
