@@ -10,12 +10,12 @@ function ScrollListener({ isInPageEnd, setIsInPageEnd }) {
       const scrollTop = document.documentElement.scrollTop
       const documentHeight = document.documentElement.offsetHeight
       const windowHeight = window.innerHeight
-
       if (
         windowHeight + scrollTop === documentHeight &&
         !workCards.IsCardsLoadedAction &&
         workCards.hasNextPage
       ) {
+        alert('ekrani verjum em es')
         setIsInPageEnd(true)
       }
     }
