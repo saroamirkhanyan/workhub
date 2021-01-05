@@ -7,8 +7,7 @@ function ScrollListener({ isInPageEnd, setIsInPageEnd }) {
 
   useEffect(() => {
     const scrollListener = () => {
-      const scrollTop = window.pageYOffset
-
+      const scrollTop = document.documentElement.scrollTop
       const documentHeight = document.documentElement.offsetHeight
       const windowHeight = window.innerHeight
 

@@ -31,7 +31,7 @@ function SignButtons() {
 
       <NavLinkStyled to="/signin">
         <SignButton padY="7" padX="10" size="4vw">
-          մուտք գործել version 2
+          մուտք գործել
         </SignButton>
       </NavLinkStyled>
     </SignButtonsWrapper>
