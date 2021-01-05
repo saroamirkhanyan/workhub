@@ -21,7 +21,7 @@ function SearchInput() {
   let history = useHistory()
   const dispatch = useDispatch()
   const SearchQuery = GetSearchQueryParam()
-  const [SearchInputValue, setSearchInputValue] = useState(SearchQuery || '')
+  const [value, setValue] = useState(SearchQuery || '')
 
   const SearchCards = (value) => {
     if (value !== '' && value !== SearchQuery) {
@@ -33,8 +33,8 @@ function SearchInput() {
 
   const handleOnChange = (event) => {
     clearTimeout(searchCardsTimeout)
-    setSearchInputValue(event.target.value)
-    console.log(SearchInputValue)
+    setValue(event.target.value)
+    console.log(value)
     setSearchCardsTimeout(
       setTimeout(() => {
         SearchCards(event.target.value)
@@ -43,7 +43,7 @@ function SearchInput() {
   }
   const onSubmit = (event) => {
     event.preventDefault()
-    SearchCards(SearchInputValue)
+    SearchCards(value)
   }
 
   return (
@@ -51,7 +51,7 @@ function SearchInput() {
       <SearchInputStyled
         placeholder="Փնտրել"
         maxLength="45"
-        value={SearchInputValue}
+        value={value}
         onChange={handleOnChange}
       />
     </form>
