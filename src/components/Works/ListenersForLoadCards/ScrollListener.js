@@ -28,13 +28,13 @@ function ScrollListener({ isInPageEnd, setIsInPageEnd }) {
     document.addEventListener('mouseup', scrollListener)
 
     return () => {
-      document.addEventListener('scroll', scrollListener)
-      document.addEventListener('touchmove', scrollListener)
-      document.addEventListener('touchstart', scrollListener)
-      document.addEventListener('touchend', scrollListener)
-      document.addEventListener('mousedown', scrollListener)
-      document.addEventListener('mousemove', scrollListener)
-      document.addEventListener('mouseup', scrollListener)
+      document.removeEventListener('scroll', scrollListener)
+      document.removeEventListener('touchmove', scrollListener)
+      document.removeEventListener('touchstart', scrollListener)
+      document.removeEventListener('touchend', scrollListener)
+      document.removeEventListener('mousedown', scrollListener)
+      document.removeEventListener('mousemove', scrollListener)
+      document.removeEventListener('mouseup', scrollListener)
     }
   }, [
     dispatch,
