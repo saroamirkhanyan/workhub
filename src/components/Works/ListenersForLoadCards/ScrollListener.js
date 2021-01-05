@@ -21,10 +21,20 @@ function ScrollListener({ isInPageEnd, setIsInPageEnd }) {
     }
     document.addEventListener('scroll', scrollListener)
     document.addEventListener('touchmove', scrollListener)
+    document.addEventListener('touchstart', scrollListener)
+    document.addEventListener('touchend', scrollListener)
+    document.addEventListener('mousedown', scrollListener)
+    document.addEventListener('mousemove', scrollListener)
+    document.addEventListener('mouseup', scrollListener)
 
     return () => {
-      document.removeEventListener('scroll', scrollListener)
-      document.removeEventListener('touchmove', scrollListener)
+      document.addEventListener('scroll', scrollListener)
+      document.addEventListener('touchmove', scrollListener)
+      document.addEventListener('touchstart', scrollListener)
+      document.addEventListener('touchend', scrollListener)
+      document.addEventListener('mousedown', scrollListener)
+      document.addEventListener('mousemove', scrollListener)
+      document.addEventListener('mouseup', scrollListener)
     }
   }, [
     dispatch,
