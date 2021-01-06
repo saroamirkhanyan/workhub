@@ -10,8 +10,8 @@ function ScrollListener({ isInPageEnd, setIsInPageEnd }) {
       const scrollTop = window.pageYOffset
       const documentHeight = document.body.scrollHeight
       const windowHeight = window.innerHeight
+
       if (scrollTop + windowHeight >= documentHeight) {
-        alert('iam listener')
         setIsInPageEnd(true)
       }
     }
