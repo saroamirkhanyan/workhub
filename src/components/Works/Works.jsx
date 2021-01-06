@@ -27,7 +27,7 @@ const Works = React.memo(() => {
   const workCards = useSelector((state) => state.WorkCards)
   const [isInPageEnd, setIsInPageEnd] = useState(false)
   const dispatch = useDispatch()
-  //if scroll in end setIsInPageEnd( true ) and then LoadCardsisInPageEnd will start
+  //if scroll in end setIsInPageEnd( true ) and then LoadCardsInEnd will start
   ScrollListener({ isInPageEnd, setIsInPageEnd })
   LoadCardsInEnd({ isInPageEnd, setIsInPageEnd })
 

@@ -11,7 +11,7 @@ function LoadCardsInEnd({ isInPageEnd, setIsInPageEnd }) {
   const searchQuery = GetSearchQueryParam()
 
   useEffect(() => {
-    if (!workCards.IsCardsLoadedAction && isInPageEnd) {
+    if (isInPageEnd) {
       const limit = Math.round(window.innerHeight / 150)
 
       dispatch(
