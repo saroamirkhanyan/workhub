@@ -11,7 +11,11 @@ function ScrollListener({ isInPageEnd, setIsInPageEnd }) {
       const documentHeight = document.body.scrollHeight
       const windowHeight = window.innerHeight
 
-      if (scrollTop + windowHeight >= documentHeight) {
+      if (
+        scrollTop + windowHeight + 5 >= documentHeight &&
+        !workCards.IsCardsLoaded &&
+        workCards.hasNextPage
+      ) {
         setIsInPageEnd(true)
       }
     }
