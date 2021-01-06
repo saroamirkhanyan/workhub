@@ -8,14 +8,10 @@ function ScrollListener({ isInPageEnd, setIsInPageEnd }) {
   useEffect(() => {
     const scrollListener = () => {
       const scrollTop = window.pageYOffset
-      const documentHeight = document.documentElement.offsetHeight
+      const documentHeight = document.body.scrollHeight
       const windowHeight = window.innerHeight
-
-      if (
-        windowHeight + scrollTop === documentHeight &&
-        !workCards.IsCardsLoaded &&
-        workCards.hasNextPage
-      ) {
+      if (scrollTop + windowHeight >= documentHeight) {
+        alert('iam listener')
         setIsInPageEnd(true)
       }
     }
