@@ -29,7 +29,7 @@ function LoadCardsInEnd({ isInPageEnd, setIsInPageEnd }) {
   }, [
     dispatch,
     workCards.nextPage,
-    workCards.IsCardsLoadedAction,
+    workCards.IsCardsLoaded,
     isInPageEnd,
     workCards.isFirstRender,
     workCards.page,

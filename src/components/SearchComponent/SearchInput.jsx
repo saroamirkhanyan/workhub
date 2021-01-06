@@ -35,11 +35,11 @@ function SearchInput() {
     clearTimeout(searchCardsTimeout)
     setValue(event.target.value)
     console.log(value)
-    setSearchCardsTimeout(
-      setTimeout(() => {
-        SearchCards(event.target.value)
-      }, 2000)
-    )
+    const timeOut = setTimeout(() => {
+      SearchCards(event.target.value)
+    }, 2000)
+
+    setSearchCardsTimeout(timeOut)
   }
   const onSubmit = (event) => {
     event.preventDefault()

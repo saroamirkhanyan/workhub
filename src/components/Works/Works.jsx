@@ -43,7 +43,7 @@ const Works = React.memo(() => {
   const Cards = workCards.cards.map((cards) => (
     <WorkCard key={cards._id} {...cards} />
   ))
-  const isAppearLoader = workCards.IsCardsLoadedAction &&
+  const isAppearLoader = workCards.IsCardsLoaded &&
     !workCards.isCardsFinished && <Loader small />
 
   return (

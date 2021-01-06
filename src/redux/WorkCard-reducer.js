@@ -16,7 +16,7 @@ const InitalState = {
   totalcards: null,
   totalPages: null,
   page: null,
-  IsCardsLoadedAction: false,
+  IsCardsLoaded: false,
   isExist: true,
 }
 
@@ -32,7 +32,7 @@ const WorkCardReducer = (state = InitalState, action) => {
     case IS_CARDS_LOADED: {
       return {
         ...state,
-        IsCardsLoadedAction: action.isLoaded,
+        IsCardsLoaded: action.isLoaded,
       }
     }
     case RESET_CARDS: {
