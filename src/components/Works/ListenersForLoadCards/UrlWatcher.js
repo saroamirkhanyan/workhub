@@ -12,7 +12,7 @@ function UrlWathcer() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (searchQuery !== '') {
+    if (searchQuery !== '' && false) {
       const limit = Math.round(window.innerHeight / 150)
       dispatch(
         LoadOrResetSearchCards({ searchQuery, page: 1, limit }, RESET_CARDS)
