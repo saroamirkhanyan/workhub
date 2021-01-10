@@ -17,10 +17,10 @@ export default class AuthController {
       const { error } = AuthValidator.signUp(req.body);
       if (error) res.status(400).json({ error: error });
       // check Email
-      const emailExist = await UserModel.findOne({
+      const isEmailExist = await UserModel.findOne({
         email: req.body.email,
       });
-      if (emailExist) return res.status(400).json({ error: 'email was taken' });
+      if (isEmailExist) return res.status(400).json({ error: 'email was taken' });
       // Hashing Password
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(req.body.password, salt);
