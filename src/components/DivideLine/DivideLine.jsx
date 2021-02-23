@@ -6,7 +6,8 @@ const Line = styled.hr`
   height: 9px;
   background-color: ${(props) => props.theme.primaryBg};
   border: none;
-  border-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 `
 
 function DivideLine() {

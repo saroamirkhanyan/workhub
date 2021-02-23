@@ -22,7 +22,7 @@ const SignButton = styled(Button)`
 
 function SignButtons() {
   return (
-    <SignButtonsWrapper justify="space-around" align="center">
+    <SignButtonsWrapper justify="space-around" align="center" gap="5">
       <NavLinkStyled to="/signup">
         <SignButton padY="7" padX="10" size="4vw">
           Գրանցվել

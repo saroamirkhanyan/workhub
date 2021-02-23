@@ -45,6 +45,11 @@ export const Text = styled.p`
       text-align: ${props.align};
     `}
 `
+
+export const Label = styled.label`
+  font-size: ${(props) => props.size}px;
+  color: ${(props) => props.theme.primaryColor};
+`
 export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
 `

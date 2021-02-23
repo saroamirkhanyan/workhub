@@ -20,10 +20,10 @@ export const LoadCards = {
   },
 }
 
-export const Sign = {
-  signIn({ login, password }) {
+export const Sign = ({ type }) => {
+  return ({ login, password }) => {
     return instance
-      .get('/signIn', {
+      .get(`/sign${type}`, {
         params: {
           login,
           password,
@@ -32,17 +32,5 @@ export const Sign = {
       .then((response) => {
         return response.data
       })
-  },
-  signUp({ login, password }) {
-    return instance
-      .get('/signUp', {
-        params: {
-          login,
-          password,
-        },
-      })
-      .then((response) => {
-        return response.data
-      })
-  },
+  }
 }
