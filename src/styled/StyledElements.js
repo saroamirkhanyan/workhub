@@ -9,6 +9,7 @@ export const Button = styled.button`
   color: ${(props) => props.theme.primaryColor};
   cursor: pointer;
   padding: ${(props) => props.padY}px ${(props) => props.padX}px;
+  width: ${(props) => props.width};
   ${(props) =>
     props.size &&
     css`
@@ -31,6 +32,7 @@ export const Wrapper = styled.div`
 export const Input = styled.input`
   background-color: ${(props) => props.theme.primaryBg};
   border: none;
+
   color: ${(props) => props.theme.primaryColor};
   ::placeholder {
     color: ${(props) => props.theme.primaryColor};
@@ -49,6 +51,7 @@ export const Text = styled.p`
 export const Label = styled.label`
   font-size: ${(props) => props.size}px;
   color: ${(props) => props.theme.primaryColor};
+  width: 100%;
 `
 export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;

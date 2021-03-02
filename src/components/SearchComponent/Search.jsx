@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Device } from '../../styled/DeviceBreackpoints'
 import SearchIcon from './SearchIcon'
-import SearchPlace from './SearchInput'
+import SearchInput from './SearchInput'
 
 const SearchWrapper = styled.label`
   display: grid;
@@ -21,7 +21,7 @@ function Search() {
   return (
     <SearchWrapper>
       <SearchIcon />
-      <SearchPlace />
+      <SearchInput />
     </SearchWrapper>
   )
 }

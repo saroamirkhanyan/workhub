@@ -9,18 +9,18 @@ const LogoWrapper = styled(NavLink)`
   background: url(${(props) => props.theme.LogoMob}), no-repeat;
   background-size: 100%;
   width: 42px;
-  height: 100%;
+  height: 42px;
   background-repeat: no-repeat;
   background-size: cover;
   justify-self: center;
   @media ${Device.mobileS} {
-    width: 49px;
-    height: 100%;
+    width: 53px;
+    height: 53px;
     background-repeat: no-repeat;
   }
-  @media ${Device.laptop} {
-    height: 100%;
-    width: 244px;
+  @media ${Device.mobileM} {
+    height: 57px;
+    width: 243px;
     grid-column: 2 / 5;
     background: url(${(props) => props.theme.LogoDesk});
     background-repeat: no-repeat;

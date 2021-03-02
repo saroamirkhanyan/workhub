@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 const Title = styled.h1`
   color: ${(props) => props.theme.primaryColor};
-  font-size: 68px;
+  font-size: 50px;
   grid-column: 1 / 13;
   text-align: center;
 `
