@@ -5,7 +5,11 @@ import { Input, Label, Wrapper, Button } from '../../styled/StyledElements'
 
 // grid dont work well
 // change StyledButton props
-const FormWrapper = styled(Wrapper)`
+const FormWrapper = styled.form`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
   grid-column: 2 / 12;
   background-color: ${(props) => props.theme.primaryBg};
   border-radius: 20px;
