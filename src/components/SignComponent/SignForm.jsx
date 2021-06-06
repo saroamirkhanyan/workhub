@@ -40,13 +40,15 @@ const SignFormBtn = styled(Button)`
 
 
 function SignForm() {
-  let history = useHistory();
+  //let history = useHistory();
   return (
-    <FormWrapper onSubmit={(event) => {
-    event.preventDefault()
-    history.push('/')
+    <FormWrapper 
+      {//onSubmit={(event) => {
+    //event.preventDefault()
+    //history.push('/')
       
- }}>
+// }}
+}>
       <Label size="20">
         <p>Email</p> <SignInput />
       </Label>
@@ -63,7 +65,7 @@ function SignForm() {
         </p>
       </Label>
       <SignFormBtn size="25px" padY="5" padX="0" onClick={(event) => {
-    history.push('/')
+    //history.push('/')
       
  }}>
          շարունակել
