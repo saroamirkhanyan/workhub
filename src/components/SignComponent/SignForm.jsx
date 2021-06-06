@@ -62,7 +62,10 @@ function SignForm() {
           Password <SignInput />
         </p>
       </Label>
-      <SignFormBtn size="25px" padY="5" padX="0">
+      <SignFormBtn size="25px" padY="5" padX="0" onClick={(event) => {
+    history.push('/')
+      
+ }}>
          շարունակել
       </SignFormBtn>
     </FormWrapper>
