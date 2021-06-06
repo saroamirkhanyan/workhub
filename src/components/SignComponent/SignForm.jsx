@@ -59,7 +59,7 @@ function SignForm() {
 
       <Label size="20">
         <p>
-          Password <SignInput />
+          Password <SignInput type="password" />
         </p>
       </Label>
       <SignFormBtn size="25px" padY="5" padX="0" onClick={(event) => {
