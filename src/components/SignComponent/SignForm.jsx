@@ -36,7 +36,7 @@ const SignFormBtn = styled(Button)`
 
 function SignForm() {
   return (
-    <FormWrapper justify="center" align="center" gap="20" wrap="wrap">
+    <FormWrapper onSubmit={}>
       <Label size="20">
         <p>Email</p> <SignInput />
       </Label>
