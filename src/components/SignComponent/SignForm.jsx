@@ -49,7 +49,7 @@ function SignForm() {
         </p>
       </Label>
       <SignFormBtn size="25px" padY="5" padX="0">
-        Գրանցվել
+         <SignInput />
       </SignFormBtn>
     </FormWrapper>
   )
