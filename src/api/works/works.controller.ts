@@ -62,11 +62,11 @@ export default class WorksController {
         price: req.body.price || 0,
         hashtags:req.body.hashtags || [],
       });
+      await model.save()
+      res.send({message:"ok"})
     catch(error) {
       res.send({error})
     }  
-    await model.save()
-    res.send({message:"ok"})
   
   }
 }
