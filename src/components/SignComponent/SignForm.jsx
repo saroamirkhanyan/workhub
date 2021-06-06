@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Device } from '../../styled/DeviceBreackpoints'
 import { Input, Label, Wrapper, Button } from '../../styled/StyledElements'
+import { useHistory } from "react-router-dom";
+
+
 
 // grid dont work well
 // change StyledButton props
@@ -32,11 +35,18 @@ const SignInput = styled(Input)`
 const SignFormBtn = styled(Button)`
   border-radius: 20px;
   width: 75%;
-`
+` 
+ 
+
 
 function SignForm() {
+  let history = useHistory();
   return (
-    <FormWrapper onSubmit={}>
+    <FormWrapper onSubmit={(event) => {
+    event.preventDefault()
+    history.push('/')
+      
+ }}>
       <Label size="20">
         <p>Email</p> <SignInput />
       </Label>
