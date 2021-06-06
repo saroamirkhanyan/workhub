@@ -55,16 +55,18 @@ export default class WorksController {
   public static async create(req: Request, res: Response, next: NextFunction) {
     //
     // Create model
-    // let model = new Model({
-    //   title: 'Test title',
-    //   subtitle: 'test subtitle',
-    // });
-    // //
-    // // Save
-    // await model.save();
-    // res.send({
-    //   message: 'Created!',
-    //   model: model,
-    // });
+    try {
+      let model = new Model({
+        userId:null,
+        description:req.body.description || '',
+        price: req.body.price || 0,
+        hashtags:req.body.hashtags || [],
+      });
+    catch(error) {
+      res.send({error})
+    }  
+    await model.save()
+    res.send({message:"ok"})
+  
   }
 }
